@@ -42,7 +42,7 @@
 		C670377128FDC33600D4E719 /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
-		C6AA71F228FCE59B0091A868 /* Maro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6AA71F228FCE59B0091A868 /* 마로.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "마로.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6AA71F528FCE59B0091A868 /* MaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaroApp.swift; sourceTree = "<group>"; };
 		C6AA71F728FCE59B0091A868 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C6AA71F928FCE59D0091A868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		C6AA71F328FCE59B0091A868 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C6AA71F228FCE59B0091A868 /* Maro.app */,
+				C6AA71F228FCE59B0091A868 /* 마로.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,9 +175,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C6AA71F128FCE59B0091A868 /* Maro */ = {
+		C6AA71F128FCE59B0091A868 /* 마로 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "Maro" */;
+			buildConfigurationList = C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "마로" */;
 			buildPhases = (
 				C6AA71EE28FCE59B0091A868 /* Sources */,
 				C6AA71EF28FCE59B0091A868 /* Frameworks */,
@@ -188,9 +188,9 @@
 			);
 			dependencies = (
 			);
-			name = Maro;
+			name = "마로";
 			productName = Maro;
-			productReference = C6AA71F228FCE59B0091A868 /* Maro.app */;
+			productReference = C6AA71F228FCE59B0091A868 /* 마로.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -221,7 +221,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C6AA71F128FCE59B0091A868 /* Maro */,
+				C6AA71F128FCE59B0091A868 /* 마로 */,
 			);
 		};
 /* End PBXProject section */
@@ -457,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "Maro" */ = {
+		C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "마로" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6AA720128FCE59D0091A868 /* Debug */,

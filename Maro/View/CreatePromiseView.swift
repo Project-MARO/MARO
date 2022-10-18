@@ -8,30 +8,39 @@
 import SwiftUI
 
 struct CreatePromiseView: View {
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: CreatePromiseViewModel
-
+    @FocusState private var isFocused: Bool
+    
     init() {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.accentColor)]
+        UITextView.appearance().backgroundColor = .clear
         viewModel = CreatePromiseViewModel()
     }
-
+    
     var body: some View {
         VStack(spacing: 0) {
             ContentInput
+            
             CategoryInput
+            
             MemoInput
+            
             Spacer()
+            
             addButton
+            
         }
+        .onTapGesture { isFocused = false }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action : {
-          self.mode.wrappedValue.dismiss()
-        }){
-          Image(systemName: "arrow.left")
+            dismiss()
+        }) {
+            Image(systemName: "arrow.left")
         })
         .navigationTitle("약속 만들기")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -41,27 +50,29 @@ extension CreatePromiseView {
             HStack(spacing: 0) {
                 Text("약속 내용")
                     .font(.headline)
+                
                 Spacer()
+                
                 Text("\(viewModel.inputCount)/25")
                     .foregroundColor(Color.inputCount)
             }
-            TextField("약속 내용을 입력해주세요",text: $viewModel.content)
-                .padding(.horizontal, 20.5)
-                .padding(.vertical, 20)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 59, maxHeight: 59)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
-                .padding(.top, 19)
+            
+            TextField("약속 내용을 입력해주세요", text: $viewModel.content)
+                .customTextFieldSetting()
+                .focused($isFocused)
         }
-        .padding(.top, 38)
-
+        .padding(.top, 30)
     }
+    
     var CategoryInput: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("카테고리")
                     .font(.headline)
+                
                 Spacer()
             }
+            
             HStack(spacing: 0) {
                 Menu {
                     Picker(selection: $viewModel.selectedCategory) {
@@ -69,7 +80,7 @@ extension CreatePromiseView {
                             Text(category)
                         }
                     } label: {
-
+                        
                     }
                 } label: {
                     HStack {
@@ -85,33 +96,44 @@ extension CreatePromiseView {
             }
             .padding(.top, 19)
         }
-        .padding(.top, 38)
+        .padding(.top, 30)
     }
+    
     var MemoInput: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text("메모")
                     .font(.headline)
+                
                 Spacer()
             }
-            TextField("메모 내용을 입력해주세요", text: $viewModel.memo)
-                .padding(.horizontal, 20.5)
-                .padding(.vertical, 20)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 59, maxHeight: 59)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
-                .padding(.top, 19)
+            
+            ZStack {
+                TextEditor(text: $viewModel.memo)
+                    .padding(.horizontal, 20.5)
+                    .padding(.vertical, 20)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
+                    .padding(.top, 19)
+                
+                Text(viewModel.memo)
+                    .opacity(0)
+                    .padding(.all, 8)
+            }
+            .focused($isFocused)
         }
-        .padding(.top, 38)
+        .padding(.top, 30)
+        .padding(.bottom)
     }
+    
     var addButton: some View {
         Button {
             viewModel.didTapButton {
-                mode.wrappedValue.dismiss()
+                dismiss()
             }
         } label: {
             Text("약속 추가")
                 .font(.headline)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 56)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
                 .background(viewModel.isButtonAvailable() ? Color.accentColor : Color.inputBackground)
                 .foregroundColor(viewModel.isButtonAvailable() ? Color.white : Color.inputCount)
                 .cornerRadius(10)

@@ -17,6 +17,10 @@ extension View {
     func bodyFontSetting() -> some View {
         modifier(bodyFontViewModifier())
     }
+    
+    func customTextFieldSetting() -> some View {
+        modifier(textFieldViewModifer())
+    }    
 }
 
 struct bodyFontViewModifier: ViewModifier {
@@ -25,6 +29,17 @@ struct bodyFontViewModifier: ViewModifier {
             .font(.body)
             .foregroundColor(.mainTextColor)
             .multilineTextAlignment(.center)
+    }
+}
+
+struct textFieldViewModifer: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal, 20.5)
+            .padding(.vertical, 20)
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 59, maxHeight: 59)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
+            .padding(.top, 19)
     }
 }
 

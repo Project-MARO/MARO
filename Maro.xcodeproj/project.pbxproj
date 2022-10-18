@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A59868028FF1A7600536A2D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59867F28FF1A7600536A2D /* View+.swift */; };
+		7A59868328FF1D0E00536A2D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59868228FF1D0E00536A2D /* Constant.swift */; };
 		C670377228FDC33600D4E719 /* NSNotification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377128FDC33600D4E719 /* NSNotification+.swift */; };
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A59867F28FF1A7600536A2D /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		7A59868228FF1D0E00536A2D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C670377128FDC33600D4E719 /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
@@ -73,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A59868128FF1CF500536A2D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				7A59868228FF1D0E00536A2D /* Constant.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		C6AA71E928FCE59B0091A868 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +109,7 @@
 				C6AA723728FD05220091A868 /* Maro.entitlements */,
 				C6AA71F528FCE59B0091A868 /* MaroApp.swift */,
 				C6AA723928FD05740091A868 /* Model */,
+				7A59868128FF1CF500536A2D /* Util */,
 				C6AA720628FCE5C70091A868 /* Extension */,
 				C6AA720528FCE5C00091A868 /* CoreData */,
 				C6AA720428FCE5B90091A868 /* ViewModel */,
@@ -150,6 +163,7 @@
 			children = (
 				C6AA720C28FCEA240091A868 /* Color+.swift */,
 				C670377128FDC33600D4E719 /* NSNotification+.swift */,
+				7A59867F28FF1A7600536A2D /* View+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -246,6 +260,7 @@
 				C6AA721828FCFAF70091A868 /* CreatePromiseView.swift in Sources */,
 				C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */,
 				C6AA720D28FCEA240091A868 /* Color+.swift in Sources */,
+				7A59868328FF1D0E00536A2D /* Constant.swift in Sources */,
 				C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */,
 				C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */,
 				C6AA721628FCFA250091A868 /* DataModel.xcdatamodeld in Sources */,
@@ -256,6 +271,7 @@
 				C6AA721C28FD046F0091A868 /* CoreDataManager.swift in Sources */,
 				C6AA721A28FCFCFA0091A868 /* CreatePromiseViewModel.swift in Sources */,
 				C6AA720A28FCE6BF0091A868 /* OnBoardingTabView.swift in Sources */,
+				7A59868028FF1A7600536A2D /* View+.swift in Sources */,
 				C6AA723B28FD05DB0091A868 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

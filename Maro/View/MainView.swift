@@ -8,57 +8,66 @@
 import SwiftUI
 
 struct MainView: View {
-
+    
     @ObservedObject var viewModel: MainViewModel
     @AppStorage("isShowingOnboarding") var isShowingOnboarding: Bool = true
-    @State var isShowingLink = false
-
+    @State var isShowingLink: Bool = false
+    @State var isSkippingOnboarding: Bool = false
+    @State var selection: Int = 1
+    
     init() {
         viewModel = MainViewModel()
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.accentColor)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.indicatorGray)
     }
-
+    
     var body: some View {
-
         NavigationView {
-            if isShowingOnboarding {
-                OnBoardingTabView
-            } else {
-                VStack(spacing: 0) {
-                    Header
-                    Spacer()
-                    if viewModel.allPromises.isEmpty {
-                        EmptyListView
-                    } else {
-                        PromiseListView
-                    }
-                }
-                .ignoresSafeArea()
-                .onAppear {
-                    viewModel.onAppear()
+            VStack(spacing: 0) {
+                Header
+                
+                Spacer()
+                
+                if viewModel.allPromises.isEmpty {
+                    EmptyListView
+                } else {
+                    PromiseListView
                 }
             }
+            .ignoresSafeArea()
+            .onAppear {
+                viewModel.onAppear()
+            }
         }
+        .fullScreenCover(isPresented: $isShowingOnboarding) {
+            OnBoardingTabView
+                .padding(.horizontal)
+        }
+        
     }
 }
 
 extension MainView {
     var skipButton: some View {
-        Button("건너뛰기") {
-            isShowingOnboarding = false
-        }
+        Button("건너뛰기") { isSkippingOnboarding.toggle() }
+            .opacity(selection == 3 ? 0 : 1)
+            .alert("알림", isPresented: $isSkippingOnboarding, actions: {
+                Button("취소", action: { })
+                Button("건너뛰기", action: { isShowingOnboarding.toggle() })
+            }) {
+                Text("설명을 건너뛸까요?")
+            }
     }
-
+    
     var ListEmptyHeader: some View {
         ZStack {
             Image("upperBar")
             VStack {
-
+                
             }
         }
     }
-
+    
     var Header: some View {
         ZStack {
             Image("upperBar")
@@ -109,7 +118,7 @@ extension MainView {
             Spacer()
         }
     }
-
+    
     var PromiseListView: some View {
         ScrollView {
             VStack {

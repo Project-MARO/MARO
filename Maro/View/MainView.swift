@@ -19,6 +19,8 @@ struct MainView: View {
         viewModel = MainViewModel()
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.accentColor)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.indicatorGray)
+        NotificationManager.shared.requestAuthorization()
+        NotificationManager.shared.scheduleNotification(viewModel.randomePromise?.description ?? "약속을 등록해보세요!")
     }
     
     var body: some View {

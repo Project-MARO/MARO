@@ -21,23 +21,17 @@ struct CreatePromiseView: View {
     var body: some View {
         VStack(spacing: 0) {
             ContentInput
-            
+                
             CategoryInput
-            
+                
             MemoInput
-            
-            Spacer()
-            
-            addButton
-            
         }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action : {
-            dismiss()
-        }) {
-            Image(systemName: "arrow.left")
-        })
+        .navigationBarItems(
+            leading: dismissButton,
+            trailing: addButton
+        )
         .navigationTitle("약속 만들기")
         .navigationBarTitleDisplayMode(.inline)
         .onTapGesture { isFocused = false }
@@ -108,21 +102,24 @@ extension CreatePromiseView {
                 Spacer()
             }
             
-            ZStack {
-                TextEditor(text: $viewModel.memo)
-                    .padding(.horizontal, 20.5)
-                    .padding(.vertical, 20)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
-                    .padding(.top, 19)
-                
-                Text(viewModel.memo)
-                    .opacity(0)
-                    .padding(.all, 8)
-            }
-            .focused($isFocused)
+            TextEditor(text: $viewModel.memo)
+                .focused($isFocused)
+                .padding(.horizontal, 20.5)
+                .padding(.vertical, 20)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 59, maxHeight: .infinity)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
+                .padding(.top, 19)
         }
         .padding(.top, 30)
         .padding(.bottom)
+    }
+    
+    var dismissButton: some View {
+        Button(action : {
+            dismiss()
+        }) {
+            Image(systemName: "arrow.left")
+        }
     }
     
     var addButton: some View {
@@ -131,13 +128,9 @@ extension CreatePromiseView {
                 dismiss()
             }
         } label: {
-            Text("약속 추가")
-                .font(.headline)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
-                .background(viewModel.isButtonAvailable() ? Color.accentColor : Color.inputBackground)
-                .foregroundColor(viewModel.isButtonAvailable() ? Color.white : Color.inputCount)
-                .cornerRadius(10)
+            Text("추가")
+                .foregroundColor(viewModel.isButtonAvailable() ? Color.accentColor : Color.inputCount)
         }
-        .padding(.bottom, 35)
+        .disabled(!viewModel.isButtonAvailable())
     }
 }

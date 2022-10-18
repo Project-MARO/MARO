@@ -98,21 +98,13 @@ extension PromiseDetailView {
                 Spacer()
             }
             
-            ZStack {
-                TextEditor(text: $viewModel.memo)
-                    .padding(.horizontal, 20.5)
-                    .padding(.vertical, 20)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
-                    .padding(.top, 19)
-                    .onSubmit {
-                        viewModel.didFinishEditing()
-                    }
-                
-                Text(viewModel.memo)
-                    .opacity(0)
-                    .padding(.all, 8)
-            }
-            .focused($isFocused)
+            TextEditor(text: $viewModel.memo)
+                .focused($isFocused)
+                .padding(.horizontal, 20.5)
+                .padding(.vertical, 20)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 59, maxHeight: .infinity)
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
+                .padding(.top, 19)
         }
         .padding(.top, 38)
     }
@@ -120,13 +112,17 @@ extension PromiseDetailView {
     var dismissButton: some View {
         Button(action : {
             dismiss()
-        }){Image(systemName: "arrow.left")}
+        }) {
+            Image(systemName: "arrow.left")
+        }
     }
     
     var deleteButton: some View {
         Button(action : {
             viewModel.isShowingAlert = true
-        }){Image(systemName: "trash")}
+        }) {
+            Text("삭제")
+        }
         .alert("약속 삭제", isPresented: $viewModel.isShowingAlert, actions: {
             Button("취소", role: .cancel, action: {
                 viewModel.isShowingAlert = false

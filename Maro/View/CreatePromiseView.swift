@@ -31,7 +31,6 @@ struct CreatePromiseView: View {
             addButton
             
         }
-        .onTapGesture { isFocused = false }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action : {
@@ -41,6 +40,7 @@ struct CreatePromiseView: View {
         })
         .navigationTitle("약속 만들기")
         .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture { isFocused = false }
     }
 }
 

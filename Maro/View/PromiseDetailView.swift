@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct PromiseDetailView: View {
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: PromiseDetailViewModel
+    @FocusState private var isFocused: Bool
 
     init(promise: PromiseEntity) {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.accentColor)]
+        UITextView.appearance().backgroundColor = .clear
         viewModel = PromiseDetailViewModel(promise: promise)
     }
 
@@ -30,6 +32,8 @@ struct PromiseDetailView: View {
             trailing: deleteButton
         )
         .navigationTitle("상세보기")
+        .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture { isFocused = false }
     }
 }
 
@@ -44,17 +48,15 @@ extension PromiseDetailView {
                     .foregroundColor(Color.inputCount)
             }
             TextField("약속 내용을 입력해주세요",text: $viewModel.content)
-                .padding(.horizontal, 20.5)
-                .padding(.vertical, 20)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 59, maxHeight: 59)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
-                .padding(.top, 19)
+                .focused($isFocused)
+                .customTextFieldSetting()
                 .onSubmit {
                     viewModel.didFinishEditing()
                 }
         }
         .padding(.top, 38)
     }
+    
     var CategoryInput: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -87,6 +89,7 @@ extension PromiseDetailView {
         }
         .padding(.top, 38)
     }
+    
     var MemoInput: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -94,23 +97,32 @@ extension PromiseDetailView {
                     .font(.headline)
                 Spacer()
             }
-            TextField("메모 내용을 입력해주세요", text: $viewModel.memo)
-                .padding(.horizontal, 20.5)
-                .padding(.vertical, 20)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 59, maxHeight: 59)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
-                .padding(.top, 19)
-                .onSubmit {
-                    viewModel.didFinishEditing()
-                }
+            
+            ZStack {
+                TextEditor(text: $viewModel.memo)
+                    .padding(.horizontal, 20.5)
+                    .padding(.vertical, 20)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
+                    .padding(.top, 19)
+                    .onSubmit {
+                        viewModel.didFinishEditing()
+                    }
+                
+                Text(viewModel.memo)
+                    .opacity(0)
+                    .padding(.all, 8)
+            }
+            .focused($isFocused)
         }
         .padding(.top, 38)
     }
+    
     var dismissButton: some View {
         Button(action : {
-            self.mode.wrappedValue.dismiss()
+            dismiss()
         }){Image(systemName: "arrow.left")}
     }
+    
     var deleteButton: some View {
         Button(action : {
             viewModel.isShowingAlert = true
@@ -121,7 +133,7 @@ extension PromiseDetailView {
             })
             Button("삭제", role: .destructive, action: {
                 viewModel.didAllowDeletion {
-                    mode.wrappedValue.dismiss()
+                    dismiss()
                 }
             })
         }, message: {

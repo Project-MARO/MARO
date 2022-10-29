@@ -10,12 +10,12 @@
 		7A59868028FF1A7600536A2D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59867F28FF1A7600536A2D /* View+.swift */; };
 		7A59868328FF1D0E00536A2D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59868228FF1D0E00536A2D /* Constant.swift */; };
 		7A5CBA1928FF4EF1002DC8C9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5CBA1828FF4EF1002DC8C9 /* NotificationManager.swift */; };
-		C66C9EEE290D51310052A9F4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C66C9EED290D51310052A9F4 /* FirebaseAnalytics */; };
 		C66C9EF0290D514E0052A9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */; };
-		C66C9EF2290D52620052A9F4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C66C9EF1290D52620052A9F4 /* FirebaseMessaging */; };
-		C66C9EF4290D67C00052A9F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C66C9EF3290D67C00052A9F4 /* GoogleService-Info.plist */; };
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
+		C68AA3A1290D7D9300B11B2A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */; };
+		C68AA3A3290D7D9A00B11B2A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C68AA3A2290D7D9A00B11B2A /* FirebaseMessaging */; };
+		C69C1304290D928C00D9B47F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C69C1303290D928C00D9B47F /* GoogleService-Info.plist */; };
 		C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45594290CE08200E65B27 /* DateFormatter+.swift */; };
 		C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45598290D0D1700E65B27 /* UINavigationController+.swift */; };
 		C6A4559B290D119F00E65B27 /* ZStack+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A4559A290D119F00E65B27 /* ZStack+.swift */; };
@@ -52,9 +52,9 @@
 		7A59868228FF1D0E00536A2D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7A5CBA1828FF4EF1002DC8C9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C66C9EF3290D67C00052A9F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
+		C69C1303290D928C00D9B47F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6A45594290CE08200E65B27 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		C6A45598290D0D1700E65B27 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		C6A4559A290D119F00E65B27 /* ZStack+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZStack+.swift"; sourceTree = "<group>"; };
@@ -83,8 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C66C9EF2290D52620052A9F4 /* FirebaseMessaging in Frameworks */,
-				C66C9EEE290D51310052A9F4 /* FirebaseAnalytics in Frameworks */,
+				C68AA3A3290D7D9A00B11B2A /* FirebaseMessaging in Frameworks */,
+				C68AA3A1290D7D9300B11B2A /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +139,7 @@
 				C6AA720428FCE5B90091A868 /* ViewModel */,
 				C6AA720328FCE5B00091A868 /* View */,
 				C6AA71F928FCE59D0091A868 /* Assets.xcassets */,
-				C66C9EF3290D67C00052A9F4 /* GoogleService-Info.plist */,
+				C69C1303290D928C00D9B47F /* GoogleService-Info.plist */,
 				C6AA71FB28FCE59D0091A868 /* Preview Content */,
 			);
 			path = Maro;
@@ -216,9 +216,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C6AA71F128FCE59B0091A868 /* 마로 */ = {
+		C6AA71F128FCE59B0091A868 /* Maro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "마로" */;
+			buildConfigurationList = C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "Maro" */;
 			buildPhases = (
 				C6AA71EE28FCE59B0091A868 /* Sources */,
 				C6AA71EF28FCE59B0091A868 /* Frameworks */,
@@ -229,10 +229,10 @@
 			);
 			dependencies = (
 			);
-			name = "마로";
+			name = Maro;
 			packageProductDependencies = (
-				C66C9EED290D51310052A9F4 /* FirebaseAnalytics */,
-				C66C9EF1290D52620052A9F4 /* FirebaseMessaging */,
+				C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */,
+				C68AA3A2290D7D9A00B11B2A /* FirebaseMessaging */,
 			);
 			productName = Maro;
 			productReference = C6AA71F228FCE59B0091A868 /* MARO.app */;
@@ -269,7 +269,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C6AA71F128FCE59B0091A868 /* 마로 */,
+				C6AA71F128FCE59B0091A868 /* Maro */,
 			);
 		};
 /* End PBXProject section */
@@ -281,7 +281,7 @@
 			files = (
 				C6AA71FD28FCE59D0091A868 /* Preview Assets.xcassets in Resources */,
 				C6AA71FA28FCE59D0091A868 /* Assets.xcassets in Resources */,
-				C66C9EF4290D67C00052A9F4 /* GoogleService-Info.plist in Resources */,
+				C69C1304290D928C00D9B47F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,15 +440,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Maro/Maro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = 76AJ433CP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "마로";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -461,10 +460,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyeonsang.MARO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kim.Maro;
 				PRODUCT_NAME = MARO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MARO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -482,15 +480,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Maro/Maro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = 76AJ433CP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "마로";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -503,10 +500,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyeonsang.MARO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kim.Maro;
 				PRODUCT_NAME = MARO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MARO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -528,7 +524,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "마로" */ = {
+		C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "Maro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6AA720128FCE59D0091A868 /* Debug */,
@@ -551,12 +547,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C66C9EED290D51310052A9F4 /* FirebaseAnalytics */ = {
+		C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		C66C9EF1290D52620052A9F4 /* FirebaseMessaging */ = {
+		C68AA3A2290D7D9A00B11B2A /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;

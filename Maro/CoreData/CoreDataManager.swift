@@ -22,7 +22,7 @@ final class CoreDataManager {
     }
 
     var sharedStoreURL: URL {
-        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.kim.Maro")!
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.hyeonsang.MARO")!
         return container.appendingPathComponent(databaseName)
     }
 

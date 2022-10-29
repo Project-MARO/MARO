@@ -10,27 +10,39 @@ import Combine
 
 final class MainViewModel: ObservableObject {
 
-    @Published var promises: Array<PromiseEntity> = [] {
-        didSet {
-            randomePromise = promises.randomElement()
-        }
-    }
+    @Published var promises: Array<PromiseEntity> = []
     @Published var isShowingLink = false
-    @Published var randomePromise: PromiseEntity?
+    @Published var randomPromise: PromiseEntity?
     @Published var isShowongAlert = false
+//    var randomPromiseID: String {
+//        get {
+//            UserDefaults.standard.string(forKey: "randomPromiseID") ?? ""
+//        }
+//    }
 
     func onAppear() {
-        getAllPromises()
+        Task {
+            await getAllPromises()
+//            await getPromiseByID()
+        }
     }
 }
 
 extension MainViewModel {
-    func getAllPromises() {
+    func getAllPromises() async {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             self.promises = CoreDataManager.shared.getAllPromises()
         }
     }
+
+//    func getPromiseByID() async {
+//        let result = CoreDataManager.shared.getPromiseBy(id: randomPromiseID)
+//        DispatchQueue.main.async { [weak self] in
+//            guard let self = self else { return }
+//            self.randomPromise = result
+//        }
+//    }
 
     func findIndex(promise: PromiseEntity?) -> String {
         guard promise != nil else { return "00"}

@@ -10,7 +10,10 @@
 		7A59868028FF1A7600536A2D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59867F28FF1A7600536A2D /* View+.swift */; };
 		7A59868328FF1D0E00536A2D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59868228FF1D0E00536A2D /* Constant.swift */; };
 		7A5CBA1928FF4EF1002DC8C9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5CBA1828FF4EF1002DC8C9 /* NotificationManager.swift */; };
-		C670377228FDC33600D4E719 /* NSNotification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377128FDC33600D4E719 /* NSNotification+.swift */; };
+		C66C9EEE290D51310052A9F4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C66C9EED290D51310052A9F4 /* FirebaseAnalytics */; };
+		C66C9EF0290D514E0052A9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */; };
+		C66C9EF2290D52620052A9F4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C66C9EF1290D52620052A9F4 /* FirebaseMessaging */; };
+		C66C9EF4290D67C00052A9F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C66C9EF3290D67C00052A9F4 /* GoogleService-Info.plist */; };
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
 		C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45594290CE08200E65B27 /* DateFormatter+.swift */; };
@@ -48,7 +51,8 @@
 		7A59867F28FF1A7600536A2D /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		7A59868228FF1D0E00536A2D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7A5CBA1828FF4EF1002DC8C9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		C670377128FDC33600D4E719 /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
+		C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C66C9EF3290D67C00052A9F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
 		C6A45594290CE08200E65B27 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66C9EF2290D52620052A9F4 /* FirebaseMessaging in Frameworks */,
+				C66C9EEE290D51310052A9F4 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +130,7 @@
 			children = (
 				C6AA723728FD05220091A868 /* Maro.entitlements */,
 				C6AA71F528FCE59B0091A868 /* MaroApp.swift */,
+				C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */,
 				7A5CBA1728FF4EE3002DC8C9 /* Manager */,
 				C6AA723928FD05740091A868 /* Model */,
 				7A59868128FF1CF500536A2D /* Util */,
@@ -132,6 +139,7 @@
 				C6AA720428FCE5B90091A868 /* ViewModel */,
 				C6AA720328FCE5B00091A868 /* View */,
 				C6AA71F928FCE59D0091A868 /* Assets.xcassets */,
+				C66C9EF3290D67C00052A9F4 /* GoogleService-Info.plist */,
 				C6AA71FB28FCE59D0091A868 /* Preview Content */,
 			);
 			path = Maro;
@@ -179,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				C6AA720C28FCEA240091A868 /* Color+.swift */,
-				C670377128FDC33600D4E719 /* NSNotification+.swift */,
 				7A59867F28FF1A7600536A2D /* View+.swift */,
 				C6A45594290CE08200E65B27 /* DateFormatter+.swift */,
 				C6A45598290D0D1700E65B27 /* UINavigationController+.swift */,
@@ -223,6 +230,10 @@
 			dependencies = (
 			);
 			name = "마로";
+			packageProductDependencies = (
+				C66C9EED290D51310052A9F4 /* FirebaseAnalytics */,
+				C66C9EF1290D52620052A9F4 /* FirebaseMessaging */,
+			);
 			productName = Maro;
 			productReference = C6AA71F228FCE59B0091A868 /* MARO.app */;
 			productType = "com.apple.product-type.application";
@@ -251,6 +262,9 @@
 				Base,
 			);
 			mainGroup = C6AA71E928FCE59B0091A868;
+			packageReferences = (
+				C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C6AA71F328FCE59B0091A868 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -267,6 +281,7 @@
 			files = (
 				C6AA71FD28FCE59D0091A868 /* Preview Assets.xcassets in Resources */,
 				C6AA71FA28FCE59D0091A868 /* Assets.xcassets in Resources */,
+				C66C9EF4290D67C00052A9F4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +302,6 @@
 				C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */,
 				C6AA721628FCFA250091A868 /* DataModel.xcdatamodeld in Sources */,
 				C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */,
-				C670377228FDC33600D4E719 /* NSNotification+.swift in Sources */,
 				C6AA724328FD2CE80091A868 /* PromiseEntity.swift in Sources */,
 				C6AA720828FCE5E20091A868 /* MainViewModel.swift in Sources */,
 				C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */,
@@ -295,6 +309,7 @@
 				C6AA721A28FCFCFA0091A868 /* CreatePromiseViewModel.swift in Sources */,
 				C6AA720A28FCE6BF0091A868 /* OnBoardingTabView.swift in Sources */,
 				7A59868028FF1A7600536A2D /* View+.swift in Sources */,
+				C66C9EF0290D514E0052A9F4 /* AppDelegate.swift in Sources */,
 				C6AA723B28FD05DB0091A868 /* Category.swift in Sources */,
 				C6A4559B290D119F00E65B27 /* ZStack+.swift in Sources */,
 			);
@@ -425,10 +440,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Maro/Maro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = 76AJ433CP5;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DL9N9GFVMW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
@@ -444,9 +461,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kim.Maro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyeonsang.MARO;
 				PRODUCT_NAME = MARO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MARO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -464,10 +482,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Maro/Maro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = 76AJ433CP5;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DL9N9GFVMW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
@@ -483,9 +503,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kim.Maro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyeonsang.MARO;
 				PRODUCT_NAME = MARO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = MARO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -517,6 +538,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C66C9EED290D51310052A9F4 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C66C9EF1290D52620052A9F4 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C6AA721428FCFA250091A868 /* DataModel.xcdatamodeld */ = {

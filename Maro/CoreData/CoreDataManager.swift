@@ -9,9 +9,12 @@ import CoreData
 
 final class CoreDataManager {
     static let shared = CoreDataManager()
-    let container = NSPersistentContainer(name: "DataModel")
-    let cloudContainer = NSPersistentCloudKitContainer(name: "DataModel")
-    let databaseName = "DataModel.sqlite"
+    private let container = NSPersistentContainer(name: "DataModel")
+    private let cloudContainer = NSPersistentCloudKitContainer(name: "DataModel")
+    private let databaseName = "DataModel.sqlite"
+    private var context: NSManagedObjectContext {
+        container.viewContext
+    }
 
     var oldStoreURL: URL {
         let directory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
@@ -69,7 +72,7 @@ final class CoreDataManager {
 extension CoreDataManager {
     func save() {
         do {
-            try container.viewContext.save()
+            try context.save()
         } catch {
             print("FAILED TO SAVE CONTEXT")
         }
@@ -77,12 +80,21 @@ extension CoreDataManager {
 
     func getAllPromises() -> Array<PromiseEntity> {
         let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
-        let result = try? container.viewContext.fetch(fetchRequest)
+        let result = try? context.fetch(fetchRequest)
         return result ?? []
+    }
+
+    func getPromiseBy(id identifier: String) -> PromiseEntity? {
+        let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.fetchLimit = 1
+        let result = try? context.fetch(fetchRequest).first
+        return result
     }
 
     func createPromise(content: String, memo: String, category: Category) {
         let promise = PromiseEntity(context: container.viewContext)
+        promise.identifier = UUID().uuidString
         promise.content = content
         promise.memo = memo
         promise.createdAt = Date()

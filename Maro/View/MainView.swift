@@ -18,8 +18,6 @@ struct MainView: View {
         viewModel = MainViewModel()
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.accentColor)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.indicatorGray)
-        NotificationManager.shared.requestAuthorization()
-        NotificationManager.shared.scheduleNotification(viewModel.randomePromise?.description ?? "약속을 등록해보세요!")
     }
     
     var body: some View {
@@ -46,17 +44,6 @@ struct MainView: View {
 }
 
 extension MainView {
-    var skipButton: some View {
-        Button("건너뛰기") { isSkippingOnboarding.toggle() }
-            .opacity(selection == 3 ? 0 : 1)
-            .alert("알림", isPresented: $isSkippingOnboarding, actions: {
-                Button("취소", action: { })
-                Button("건너뛰기", action: { isShowingOnboarding.toggle() })
-            }) {
-                Text("설명을 건너뛸까요?")
-            }
-    }
-
     private var Header: some View {
         Rectangle()
             .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
@@ -92,11 +79,11 @@ extension MainView {
                         .foregroundColor(.white)
                         .padding(.bottom, 28)
                 } else {
-                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.randomePromise))번 약속을 지켜볼까요?")
+                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.randomPromise))번 약속을 지켜볼까요?")
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .padding(.bottom, 11)
-                    Text("\(viewModel.randomePromise?.content ?? "")")
+                    Text("\(viewModel.randomPromise?.content ?? "")")
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
                         .font(.title3)

@@ -176,8 +176,10 @@ extension PromiseDetailView {
 
     var editButton: some View {
         Button {
-            viewModel.didTapEditButton {
-                dismiss()
+            if viewModel.isButtonAvailable() {
+                viewModel.didTapEditButton {
+                    dismiss()
+                }
             }
         } label: {
             Text("수정 하기")

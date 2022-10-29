@@ -13,6 +13,7 @@
 		C670377228FDC33600D4E719 /* NSNotification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377128FDC33600D4E719 /* NSNotification+.swift */; };
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
+		C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45594290CE08200E65B27 /* DateFormatter+.swift */; };
 		C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA71F528FCE59B0091A868 /* MaroApp.swift */; };
 		C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA71F728FCE59B0091A868 /* MainView.swift */; };
 		C6AA71FA28FCE59D0091A868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6AA71F928FCE59D0091A868 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		C670377128FDC33600D4E719 /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
+		C6A45594290CE08200E65B27 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		C6AA71F228FCE59B0091A868 /* MARO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MARO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6AA71F528FCE59B0091A868 /* MaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaroApp.swift; sourceTree = "<group>"; };
 		C6AA71F728FCE59B0091A868 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				C6AA720C28FCEA240091A868 /* Color+.swift */,
 				C670377128FDC33600D4E719 /* NSNotification+.swift */,
 				7A59867F28FF1A7600536A2D /* View+.swift */,
+				C6A45594290CE08200E65B27 /* DateFormatter+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				C670377228FDC33600D4E719 /* NSNotification+.swift in Sources */,
 				C6AA724328FD2CE80091A868 /* PromiseEntity.swift in Sources */,
 				C6AA720828FCE5E20091A868 /* MainViewModel.swift in Sources */,
+				C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */,
 				C6AA721C28FD046F0091A868 /* CoreDataManager.swift in Sources */,
 				C6AA721A28FCFCFA0091A868 /* CreatePromiseViewModel.swift in Sources */,
 				C6AA720A28FCE6BF0091A868 /* OnBoardingTabView.swift in Sources */,

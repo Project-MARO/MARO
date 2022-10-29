@@ -11,7 +11,6 @@ import Combine
 final class PromiseDetailViewModel: ObservableObject {
 
     let promise: PromiseEntity
-
     @Published var content = "" {
         didSet {
             if content.count > 25 && oldValue.count <= 25 {
@@ -19,16 +18,27 @@ final class PromiseDetailViewModel: ObservableObject {
             }
         }
     }
-    @Published var memo = ""
-    @Published var selectedCategory = "" {
+    @Published var memo = "" {
         didSet {
-            didFinishEditing()
+            if memo.count > 100 && oldValue.count <= 100 {
+                memo = oldValue
+            }
         }
     }
+    @Published var selectedCategory = ""
     @Published var isShowingAlert = false
+    @Published var textEditorHeight: CGFloat = 80 {
+        didSet {
+            print(textEditorHeight)
+        }
+    }
 
     var inputCount: Int {
         content.count
+    }
+
+    var memoCount: Int {
+        memo.count
     }
 
     let pickers = ["학업", "취업", "인생", "자기계발", "인간관계"]
@@ -41,17 +51,38 @@ final class PromiseDetailViewModel: ObservableObject {
         self.selectedCategory = category?.toString ?? ""
     }
 
-    func didFinishEditing() {
+    func didAllowDeletion(completion: @escaping (() -> Void)) {
+        CoreDataManager.shared.deletePromise(promise: promise)
+        completion()
+    }
+
+    func didTapEditButton(completion: @escaping (() -> Void)) {
+        guard let category = Category(string: selectedCategory) else { return }
         CoreDataManager.shared.editPromise(
             promise: promise,
             content: content,
             memo: memo,
-            category: Category(string: selectedCategory)!
+            category: category
         )
+        completion()
     }
 
-    func didAllowDeletion(completion: @escaping (() -> Void)) {
-        CoreDataManager.shared.deletePromise(promise: promise)
-        completion()
+    func calculateDateFormat() -> String {
+        let formatter = DateFormatter(dateFormatType: .koreanYearMonthDay)
+        let result = formatter.string(from: promise.createdAt ?? Date())
+        return result
+    }
+
+    func isButtonAvailable() -> Bool {
+        guard let selectedCategory = Category(string: selectedCategory) else { return false }
+        if !(selectedCategory.rawValue == promise.category) || !(content == promise.content) {
+            if content.isEmpty {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
     }
 }

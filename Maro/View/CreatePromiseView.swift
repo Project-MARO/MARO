@@ -21,10 +21,8 @@ struct CreatePromiseView: View {
     var body: some View {
         VStack(spacing: 0) {
             ContentInput
-                
             CategoryInput
-                
-            MemoInput
+            Spacer()
         }
         .padding(.horizontal)
         .navigationBarBackButtonHidden(true)

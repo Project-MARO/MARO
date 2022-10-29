@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C6AA71F128FCE59B0091A868"
-               BuildableName = "Maro.app"
-               BlueprintName = "Maro"
+               BuildableName = "&#x1106;&#x1161;&#x1105;&#x1169;.app"
+               BlueprintName = "&#xb9c8;&#xb85c;"
                ReferencedContainer = "container:Maro.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C6AA71F128FCE59B0091A868"
-            BuildableName = "Maro.app"
-            BlueprintName = "Maro"
+            BuildableName = "&#x1106;&#x1161;&#x1105;&#x1169;.app"
+            BlueprintName = "&#xb9c8;&#xb85c;"
             ReferencedContainer = "container:Maro.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C6AA71F128FCE59B0091A868"
-            BuildableName = "Maro.app"
-            BlueprintName = "Maro"
+            BuildableName = "&#x1106;&#x1161;&#x1105;&#x1169;.app"
+            BlueprintName = "&#xb9c8;&#xb85c;"
             ReferencedContainer = "container:Maro.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

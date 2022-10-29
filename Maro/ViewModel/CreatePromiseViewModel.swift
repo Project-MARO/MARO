@@ -34,7 +34,13 @@ final class CreatePromiseViewModel: ObservableObject {
 
     func didTapButton(completion: @escaping (() -> Void)) {
         if isButtonAvailable() {
-            CoreDataManager.shared.createPromise(content: content, memo: memo, category: Category(string: selectedCategory)!)
+
+            guard let category = Category(string: selectedCategory) else { return }
+            CoreDataManager.shared.createPromise(
+                content: content,
+                memo: memo,
+                category: category
+            )
             completion()
         }
     }

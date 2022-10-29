@@ -19,4 +19,6 @@ extension Color {
     static let lifeColor = Color("LifeColor")
     static let humanRelationsColor = Color("HumanRelationsColor")
     static let employmentColor = Color("EmploymentColor")
+    static let mainTextColor = Color("MainTextColor")
+    static let subTextColor = Color("SubTextColor")
 }

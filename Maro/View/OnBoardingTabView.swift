@@ -7,65 +7,73 @@
 
 import SwiftUI
 
-extension MainView {
+extension MainView {    
     var OnBoardingTabView: some View {
-        TabView {
-            OnboardFirstView
-            OnboardSecondView
-            OnboardThirdView
-        }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-        .toolbar {
-            Button("건너뛰기") {
-                isShowingOnboarding = false
+        VStack {
+            HStack {
+                Spacer()
+                
+                skipButton
             }
+            .padding(.bottom, 50)
+            
+            TabView(selection: $selection) {
+                OnboardFirstView.tag(1)
+                OnboardSecondView.tag(2)
+                OnboardThirdView.tag(3)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
         }
     }
-
+    
     private var OnboardFirstView: some View {
         VStack(spacing: 0) {
             Text("나의 하루를 위한 하나의 약속을 확인해요")
-                .font(.body)
-                .padding(.top, 101)
-                .frame(height: 20)
+                .bodyFontSetting()
+            
             Image("onBoarding1")
-                .padding(.top, 130)
-
+                .padding(.top, Constant.screenHeight / 20)
+            
             Spacer()
         }
-        .padding(.horizontal)
     }
-
+    
     private var OnboardSecondView: some View {
         VStack(spacing: 0) {
             Text("꼭 지켜야할 나만의 약속들을\n간편하게 관리해요")
-                .font(.body)
-                .padding(.top, 50)
-                .multilineTextAlignment(.center)
+                .bodyFontSetting()
+            
             Image("onBoarding2")
-                .padding(.top, 62)
+                .padding(.top, Constant.screenHeight / 20)
+            
             Spacer()
         }
-        .padding(.horizontal)
     }
-
+    
     private var OnboardThirdView: some View {
-        ZStack {
+        VStack(spacing: 0) {
+            Spacer()
+            
             Image("onBoarding3")
-            VStack {
-                Spacer()
-                Button {
-                    isShowingOnboarding = false
-                } label: {
-                    Text("시작하기")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
-                        .foregroundColor(.white)
-                        .background(Color.accentColor)
-                        .cornerRadius(10)
-                }
-                .padding(.bottom, 51)
+                .padding(.bottom, 40)
+            
+            Text("나의 하루를 위한 하나의 약속\n마로와 함께 해요")
+                .bodyFontSetting()
+
+            Spacer()
+            
+            Button {
+                isShowingOnboarding = false
+            } label: {
+                Text("시작하기")
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
+                    .foregroundColor(.white)
+                    .background(Color.accentColor)
+                    .cornerRadius(10)
             }
+            .padding(.bottom, 51)
         }
-        .padding(.horizontal)
     }
 }
+
+

@@ -13,28 +13,41 @@ struct PromiseDetailView: View {
     @FocusState private var isFocused: Bool
 
     init(promise: PromiseEntity) {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.accentColor)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
         UITextView.appearance().backgroundColor = .clear
         viewModel = PromiseDetailViewModel(promise: promise)
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            Header
-            ContentInput
-            CategoryInput
-            Spacer()
-            editButton
+        ZStack {
+            VStack(spacing: 0) {
+                Header
+                ContentInput
+                CategoryInput
+                Spacer()
+                editButton
+            }
+            .padding(.horizontal)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading: dismissButton,
+                trailing: deleteButton
+            )
+            .navigationTitle("상세보기")
+            .navigationBarTitleDisplayMode(.inline)
+            if isFocused {
+                Rectangle()
+                    .opacity(0.00000000000000000001)
+                    .onTapGesture {
+                        isFocused = false
+                    }
+            }
+            VStack {
+                Spacer()
+                editButton
+            }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            leading: dismissButton,
-            trailing: deleteButton
-        )
-        .navigationTitle("상세보기")
-        .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture { isFocused = false }
     }
 }
 
@@ -136,6 +149,7 @@ extension PromiseDetailView {
             dismiss()
         }) {
             Image(systemName: "arrow.left")
+                .foregroundColor(.mainPurple)
         }
     }
     
@@ -144,6 +158,7 @@ extension PromiseDetailView {
             viewModel.isShowingAlert = true
         }) {
             Text("삭제")
+                .foregroundColor(.mainPurple)
         }
         .alert("약속 삭제", isPresented: $viewModel.isShowingAlert, actions: {
             Button("취소", role: .cancel, action: {
@@ -174,7 +189,7 @@ extension PromiseDetailView {
                 .padding(.vertical, 18)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .background(viewModel.isButtonAvailable() ?
-                    Color.accentColor :
+                    Color.mainPurple :
                     Color.inputCount
                 )
                 .cornerRadius(10)

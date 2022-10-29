@@ -14,6 +14,8 @@
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
 		C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45594290CE08200E65B27 /* DateFormatter+.swift */; };
+		C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45598290D0D1700E65B27 /* UINavigationController+.swift */; };
+		C6A4559B290D119F00E65B27 /* ZStack+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A4559A290D119F00E65B27 /* ZStack+.swift */; };
 		C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA71F528FCE59B0091A868 /* MaroApp.swift */; };
 		C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA71F728FCE59B0091A868 /* MainView.swift */; };
 		C6AA71FA28FCE59D0091A868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6AA71F928FCE59D0091A868 /* Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
 		C6A45594290CE08200E65B27 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		C6A45598290D0D1700E65B27 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
+		C6A4559A290D119F00E65B27 /* ZStack+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZStack+.swift"; sourceTree = "<group>"; };
 		C6AA71F228FCE59B0091A868 /* MARO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MARO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6AA71F528FCE59B0091A868 /* MaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaroApp.swift; sourceTree = "<group>"; };
 		C6AA71F728FCE59B0091A868 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 				C670377128FDC33600D4E719 /* NSNotification+.swift */,
 				7A59867F28FF1A7600536A2D /* View+.swift */,
 				C6A45594290CE08200E65B27 /* DateFormatter+.swift */,
+				C6A45598290D0D1700E65B27 /* UINavigationController+.swift */,
+				C6A4559A290D119F00E65B27 /* ZStack+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 				7A5CBA1928FF4EF1002DC8C9 /* NotificationManager.swift in Sources */,
 				C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */,
 				C6AA720D28FCEA240091A868 /* Color+.swift in Sources */,
+				C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */,
 				7A59868328FF1D0E00536A2D /* Constant.swift in Sources */,
 				C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */,
 				C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */,
@@ -289,6 +296,7 @@
 				C6AA720A28FCE6BF0091A868 /* OnBoardingTabView.swift in Sources */,
 				7A59868028FF1A7600536A2D /* View+.swift in Sources */,
 				C6AA723B28FD05DB0091A868 /* Category.swift in Sources */,
+				C6A4559B290D119F00E65B27 /* ZStack+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +428,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = 76AJ433CP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
@@ -459,7 +467,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = 76AJ433CP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";

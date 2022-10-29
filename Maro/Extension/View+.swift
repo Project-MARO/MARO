@@ -19,7 +19,7 @@ extension View {
     
     func customTextFieldSetting() -> some View {
         modifier(textFieldViewModifer())
-    }    
+    }
 }
 
 struct bodyFontViewModifier: ViewModifier {

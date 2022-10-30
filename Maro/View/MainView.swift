@@ -11,7 +11,6 @@ struct MainView: View {
     
     @ObservedObject var viewModel: MainViewModel
     @AppStorage("isShowingOnboarding") var isShowingOnboarding: Bool = true
-    @State var isShowingLink: Bool = false
     @State var isSkippingOnboarding: Bool = false
     @State var selection: Int = 1
     
@@ -19,18 +18,14 @@ struct MainView: View {
         viewModel = MainViewModel()
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.accentColor)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.indicatorGray)
-        NotificationManager.shared.requestAuthorization()
-        NotificationManager.shared.scheduleNotification(viewModel.randomePromise?.description ?? "약속을 등록해보세요!")
     }
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
                 Header
-                
                 Spacer()
-                
-                if viewModel.allPromises.isEmpty {
+                if viewModel.promises.isEmpty {
                     EmptyListView
                 } else {
                     PromiseListView
@@ -45,28 +40,16 @@ struct MainView: View {
             OnBoardingTabView
                 .padding(.horizontal)
         }
-        
     }
 }
 
 extension MainView {
-    var skipButton: some View {
-        Button("건너뛰기") { isSkippingOnboarding.toggle() }
-            .opacity(selection == 3 ? 0 : 1)
-            .alert("알림", isPresented: $isSkippingOnboarding, actions: {
-                Button("취소", action: { })
-                Button("건너뛰기", action: { isShowingOnboarding.toggle() })
-            }) {
-                Text("설명을 건너뛸까요?")
-            }
-    }
-
     private var Header: some View {
         Rectangle()
             .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
             .frame(height: Constant.screenHeight * 0.35)
-            .foregroundColor(Color.accentColor)
+            .foregroundColor(Color.mainPurple)
             .padding(.bottom)
             .overlay { overlayView }
     }
@@ -90,17 +73,17 @@ extension MainView {
             VStack (alignment: .center, spacing: 0) {
                 Spacer()
                 
-                if viewModel.allPromises.isEmpty {
+                if viewModel.promises.isEmpty {
                     Text("새로운 약속을 만들어볼까요?")
                         .font(.title3)
                         .foregroundColor(.white)
                         .padding(.bottom, 28)
                 } else {
-                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.randomePromise))번 약속을 지켜볼까요?")
+                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.randomPromise))번 약속을 지켜볼까요?")
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .padding(.bottom, 11)
-                    Text("\(viewModel.randomePromise?.content ?? "")")
+                    Text("\(viewModel.randomPromise?.content ?? "")")
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
                         .font(.title3)
@@ -108,9 +91,13 @@ extension MainView {
                         .padding(.bottom, 28)
                         .frame(minWidth: 0, maxWidth: 264)
                 }
-                
-                NavigationLink {
-                    CreatePromiseView()
+
+                Button {
+                    if viewModel.isCreatePromiseAvailable() {
+                        viewModel.isShowingLink = true
+                    } else {
+                        viewModel.isShowongAlert = true
+                    }
                 } label: {
                     Text("+ 새 약속 만들기")
                         .foregroundColor(.white)
@@ -119,9 +106,19 @@ extension MainView {
                         .padding(.horizontal, 28)
                         .overlay {
                             Capsule().stroke(.white, lineWidth: 1)
-                    }
+                        }
                 }
-                
+                .alert(isPresented: $viewModel.isShowongAlert) {
+                    Alert(
+                        title: Text("알림"),
+                        message: Text("최대 10개의 약속을 만들 수 있어요."),
+                        dismissButton: .default(Text("확인"))
+                    )
+                }
+                NavigationLink("", isActive: $viewModel.isShowingLink) {
+                    CreatePromiseView()
+                }
+
                 Spacer()
             }
         }
@@ -142,7 +139,7 @@ extension MainView {
     private var PromiseListView: some View {
         ScrollView {
             VStack {
-                ForEach(viewModel.allPromises) { promise in
+                ForEach(viewModel.promises) { promise in
                     NavigationLink {
                         PromiseDetailView(promise: promise)
                     } label: {

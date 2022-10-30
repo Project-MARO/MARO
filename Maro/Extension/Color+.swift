@@ -21,4 +21,5 @@ extension Color {
     static let employmentColor = Color("EmploymentColor")
     static let mainTextColor = Color("MainTextColor")
     static let subTextColor = Color("SubTextColor")
+    static let mainPurple = Color("MainPurple")
 }

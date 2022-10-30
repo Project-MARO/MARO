@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-extension MainView {    
+extension MainView {
     var OnBoardingTabView: some View {
         VStack {
             HStack {
                 Spacer()
-                
                 skipButton
             }
             .padding(.bottom, 50)
@@ -73,6 +72,17 @@ extension MainView {
             }
             .padding(.bottom, 51)
         }
+    }
+
+    private var skipButton: some View {
+        Button("건너뛰기") { isSkippingOnboarding.toggle() }
+            .opacity(selection == 3 ? 0 : 1)
+            .alert("알림", isPresented: $isSkippingOnboarding, actions: {
+                Button("취소", action: { })
+                Button("건너뛰기", action: { isShowingOnboarding.toggle() })
+            }) {
+                Text("설명을 건너뛸까요?")
+            }
     }
 }
 

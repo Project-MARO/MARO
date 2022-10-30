@@ -10,9 +10,16 @@
 		7A59868028FF1A7600536A2D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59867F28FF1A7600536A2D /* View+.swift */; };
 		7A59868328FF1D0E00536A2D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59868228FF1D0E00536A2D /* Constant.swift */; };
 		7A5CBA1928FF4EF1002DC8C9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5CBA1828FF4EF1002DC8C9 /* NotificationManager.swift */; };
-		C670377228FDC33600D4E719 /* NSNotification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377128FDC33600D4E719 /* NSNotification+.swift */; };
+		C66C9EF0290D514E0052A9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */; };
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
+		C68AA3A1290D7D9300B11B2A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */; };
+		C68AA3A3290D7D9A00B11B2A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = C68AA3A2290D7D9A00B11B2A /* FirebaseMessaging */; };
+		C69C1306290E96E300D9B47F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1305290E96E300D9B47F /* CoreData.swift */; };
+		C69C130A290E98F800D9B47F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C69C1309290E98F800D9B47F /* GoogleService-Info.plist */; };
+		C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45594290CE08200E65B27 /* DateFormatter+.swift */; };
+		C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45598290D0D1700E65B27 /* UINavigationController+.swift */; };
+		C6A4559B290D119F00E65B27 /* ZStack+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A4559A290D119F00E65B27 /* ZStack+.swift */; };
 		C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA71F528FCE59B0091A868 /* MaroApp.swift */; };
 		C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA71F728FCE59B0091A868 /* MainView.swift */; };
 		C6AA71FA28FCE59D0091A868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6AA71F928FCE59D0091A868 /* Assets.xcassets */; };
@@ -45,9 +52,14 @@
 		7A59867F28FF1A7600536A2D /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		7A59868228FF1D0E00536A2D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7A5CBA1828FF4EF1002DC8C9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		C670377128FDC33600D4E719 /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
+		C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
+		C69C1305290E96E300D9B47F /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		C69C1309290E98F800D9B47F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C6A45594290CE08200E65B27 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		C6A45598290D0D1700E65B27 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
+		C6A4559A290D119F00E65B27 /* ZStack+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ZStack+.swift"; sourceTree = "<group>"; };
 		C6AA71F228FCE59B0091A868 /* MARO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MARO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6AA71F528FCE59B0091A868 /* MaroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaroApp.swift; sourceTree = "<group>"; };
 		C6AA71F728FCE59B0091A868 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -60,7 +72,6 @@
 		C6AA721728FCFAF70091A868 /* CreatePromiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseView.swift; sourceTree = "<group>"; };
 		C6AA721928FCFCFA0091A868 /* CreatePromiseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseViewModel.swift; sourceTree = "<group>"; };
 		C6AA721B28FD046F0091A868 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		C6AA722328FD04FE0091A868 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		C6AA722528FD04FE0091A868 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C6AA723728FD05220091A868 /* Maro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Maro.entitlements; sourceTree = "<group>"; };
 		C6AA723828FD053C0091A868 /* MaroWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MaroWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -73,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C68AA3A3290D7D9A00B11B2A /* FirebaseMessaging in Frameworks */,
+				C68AA3A1290D7D9300B11B2A /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +131,7 @@
 			children = (
 				C6AA723728FD05220091A868 /* Maro.entitlements */,
 				C6AA71F528FCE59B0091A868 /* MaroApp.swift */,
+				C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */,
 				7A5CBA1728FF4EE3002DC8C9 /* Manager */,
 				C6AA723928FD05740091A868 /* Model */,
 				7A59868128FF1CF500536A2D /* Util */,
@@ -126,6 +140,7 @@
 				C6AA720428FCE5B90091A868 /* ViewModel */,
 				C6AA720328FCE5B00091A868 /* View */,
 				C6AA71F928FCE59D0091A868 /* Assets.xcassets */,
+				C69C1309290E98F800D9B47F /* GoogleService-Info.plist */,
 				C6AA71FB28FCE59D0091A868 /* Preview Content */,
 			);
 			path = Maro;
@@ -165,6 +180,7 @@
 			children = (
 				C6AA721428FCFA250091A868 /* DataModel.xcdatamodeld */,
 				C6AA721B28FD046F0091A868 /* CoreDataManager.swift */,
+				C69C1305290E96E300D9B47F /* CoreData.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -173,8 +189,10 @@
 			isa = PBXGroup;
 			children = (
 				C6AA720C28FCEA240091A868 /* Color+.swift */,
-				C670377128FDC33600D4E719 /* NSNotification+.swift */,
 				7A59867F28FF1A7600536A2D /* View+.swift */,
+				C6A45594290CE08200E65B27 /* DateFormatter+.swift */,
+				C6A45598290D0D1700E65B27 /* UINavigationController+.swift */,
+				C6A4559A290D119F00E65B27 /* ZStack+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -182,7 +200,6 @@
 		C6AA722228FD04FE0091A868 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C6AA722328FD04FE0091A868 /* WidgetKit.framework */,
 				C6AA722528FD04FE0091A868 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
@@ -200,9 +217,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C6AA71F128FCE59B0091A868 /* 마로 */ = {
+		C6AA71F128FCE59B0091A868 /* Maro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "마로" */;
+			buildConfigurationList = C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "Maro" */;
 			buildPhases = (
 				C6AA71EE28FCE59B0091A868 /* Sources */,
 				C6AA71EF28FCE59B0091A868 /* Frameworks */,
@@ -213,7 +230,11 @@
 			);
 			dependencies = (
 			);
-			name = "마로";
+			name = Maro;
+			packageProductDependencies = (
+				C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */,
+				C68AA3A2290D7D9A00B11B2A /* FirebaseMessaging */,
+			);
 			productName = Maro;
 			productReference = C6AA71F228FCE59B0091A868 /* MARO.app */;
 			productType = "com.apple.product-type.application";
@@ -242,11 +263,14 @@
 				Base,
 			);
 			mainGroup = C6AA71E928FCE59B0091A868;
+			packageReferences = (
+				C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C6AA71F328FCE59B0091A868 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C6AA71F128FCE59B0091A868 /* 마로 */,
+				C6AA71F128FCE59B0091A868 /* Maro */,
 			);
 		};
 /* End PBXProject section */
@@ -258,6 +282,7 @@
 			files = (
 				C6AA71FD28FCE59D0091A868 /* Preview Assets.xcassets in Resources */,
 				C6AA71FA28FCE59D0091A868 /* Assets.xcassets in Resources */,
+				C69C130A290E98F800D9B47F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,19 +297,23 @@
 				7A5CBA1928FF4EF1002DC8C9 /* NotificationManager.swift in Sources */,
 				C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */,
 				C6AA720D28FCEA240091A868 /* Color+.swift in Sources */,
+				C69C1306290E96E300D9B47F /* CoreData.swift in Sources */,
+				C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */,
 				7A59868328FF1D0E00536A2D /* Constant.swift in Sources */,
 				C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */,
 				C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */,
 				C6AA721628FCFA250091A868 /* DataModel.xcdatamodeld in Sources */,
 				C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */,
-				C670377228FDC33600D4E719 /* NSNotification+.swift in Sources */,
 				C6AA724328FD2CE80091A868 /* PromiseEntity.swift in Sources */,
 				C6AA720828FCE5E20091A868 /* MainViewModel.swift in Sources */,
+				C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */,
 				C6AA721C28FD046F0091A868 /* CoreDataManager.swift in Sources */,
 				C6AA721A28FCFCFA0091A868 /* CreatePromiseViewModel.swift in Sources */,
 				C6AA720A28FCE6BF0091A868 /* OnBoardingTabView.swift in Sources */,
 				7A59868028FF1A7600536A2D /* View+.swift in Sources */,
+				C66C9EF0290D514E0052A9F4 /* AppDelegate.swift in Sources */,
 				C6AA723B28FD05DB0091A868 /* Category.swift in Sources */,
+				C6A4559B290D119F00E65B27 /* ZStack+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,13 +442,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Maro/Maro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DL9N9GFVMW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "마로";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -432,9 +464,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kim.Maro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyeonsang.MARO;
 				PRODUCT_NAME = MARO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MARO dev";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -452,13 +485,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Maro/Maro.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DL9N9GFVMW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "마로";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -471,9 +507,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kim.Maro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyeonsang.MARO;
 				PRODUCT_NAME = MARO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "MARO dev";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -495,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "마로" */ = {
+		C6AA720028FCE59D0091A868 /* Build configuration list for PBXNativeTarget "Maro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C6AA720128FCE59D0091A868 /* Debug */,
@@ -505,6 +542,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C68AA3A2290D7D9A00B11B2A /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C6AA721428FCFA250091A868 /* DataModel.xcdatamodeld */ = {

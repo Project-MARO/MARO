@@ -25,7 +25,7 @@ final class CreatePromiseViewModel: ObservableObject {
     }
 
     func isButtonAvailable() -> Bool {
-        if !content.isEmpty, !memo.isEmpty, selectedCategory != "선택" {
+        if !content.isEmpty, selectedCategory != "선택" {
             return true
         } else {
             return false
@@ -34,7 +34,12 @@ final class CreatePromiseViewModel: ObservableObject {
 
     func didTapButton(completion: @escaping (() -> Void)) {
         if isButtonAvailable() {
-            CoreDataManager.shared.createPromise(content: content, memo: memo, category: Category(string: selectedCategory)!)
+            guard let category = Category(string: selectedCategory) else { return }
+            CoreDataManager.shared.createPromise(
+                content: content,
+                memo: memo,
+                category: category
+            )
             completion()
         }
     }

@@ -9,32 +9,41 @@ import SwiftUI
 
 struct CreatePromiseView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var viewModel: CreatePromiseViewModel
+    @ObservedObject var viewModel = CreatePromiseViewModel()
     @FocusState private var isFocused: Bool
     
     init() {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.accentColor)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
         UITextView.appearance().backgroundColor = .clear
-        viewModel = CreatePromiseViewModel()
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            ContentInput
-                
-            CategoryInput
-                
-            MemoInput
+        ZStack {
+            VStack(spacing: 0) {
+                ContentInput
+                CategoryInput
+                Spacer()
+            }
+            .padding(.horizontal)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading: dismissButton
+            )
+            .navigationTitle("약속 만들기")
+            .navigationBarTitleDisplayMode(.inline)
+            if isFocused {
+                Rectangle()
+                    .opacity(0.00000000000000000001)
+                    .onTapGesture {
+                        isFocused = false
+                    }
+            }
+            VStack {
+                Spacer()
+                createButton
+            }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            leading: dismissButton,
-            trailing: addButton
-        )
-        .navigationTitle("약속 만들기")
-        .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture { isFocused = false }
     }
 }
 
@@ -52,6 +61,7 @@ extension CreatePromiseView {
             }
             
             TextField("약속 내용을 입력해주세요", text: $viewModel.content)
+                .focused($isFocused)
                 .customTextFieldSetting()
                 .focused($isFocused)
         }
@@ -122,15 +132,26 @@ extension CreatePromiseView {
         }
     }
     
-    var addButton: some View {
+    var createButton: some View {
         Button {
             viewModel.didTapButton {
                 dismiss()
             }
         } label: {
-            Text("추가")
-                .foregroundColor(viewModel.isButtonAvailable() ? Color.accentColor : Color.inputCount)
+            Text("약속 만들기")
+                .font(.headline)
+                .foregroundColor(
+                    viewModel.isButtonAvailable() ?
+                    Color.white :
+                    Color.inputBackground)
+                .padding(.vertical, 18)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .background(viewModel.isButtonAvailable() ?
+                    Color.mainPurple :
+                    Color.inputCount
+                )
+                .cornerRadius(10)
         }
-        .disabled(!viewModel.isButtonAvailable())
+        .padding(.bottom, 16)
     }
 }

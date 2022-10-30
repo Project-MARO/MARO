@@ -15,6 +15,7 @@ public class PromiseEntity: NSManagedObject {
         return NSFetchRequest<PromiseEntity>(entityName: "PromiseEntity")
     }
 
+    @NSManaged public var identifier: String
     @NSManaged public var category: Int16
     @NSManaged public var content: String?
     @NSManaged public var createdAt: Date?

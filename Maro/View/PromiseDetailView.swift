@@ -13,33 +13,59 @@ struct PromiseDetailView: View {
     @FocusState private var isFocused: Bool
 
     init(promise: PromiseEntity) {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.accentColor)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
         UITextView.appearance().backgroundColor = .clear
         viewModel = PromiseDetailViewModel(promise: promise)
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            ContentInput
-            CategoryInput
-            MemoInput
-            Spacer()
+        ZStack {
+            VStack(spacing: 0) {
+                Header
+                ContentInput
+                CategoryInput
+                Spacer()
+                editButton
+            }
+            .padding(.horizontal)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(
+                leading: dismissButton,
+                trailing: deleteButton
+            )
+            .navigationTitle("상세보기")
+            .navigationBarTitleDisplayMode(.inline)
+            if isFocused {
+                Rectangle()
+                    .opacity(0.00000000000000000001)
+                    .onTapGesture {
+                        isFocused = false
+                    }
+            }
+            VStack {
+                Spacer()
+                editButton
+            }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            leading: dismissButton,
-            trailing: deleteButton
-        )
-        .navigationTitle("상세보기")
-        .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture { isFocused = false }
     }
 }
 
 extension PromiseDetailView {
+
+    var Header: some View {
+        HStack(spacing: 0) {
+            Text(viewModel.calculateDateFormat())
+                .font(.callout)
+            Text(" 에 작성된 약속이에요")
+                .font(.subheadline)
+                .foregroundColor(.inputCount)
+        }
+        .padding(.top, 38)
+    }
+
     var ContentInput: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 0) {
                 Text("약속 내용")
                     .font(.headline)
@@ -50,20 +76,14 @@ extension PromiseDetailView {
             TextField("약속 내용을 입력해주세요",text: $viewModel.content)
                 .focused($isFocused)
                 .customTextFieldSetting()
-                .onSubmit {
-                    viewModel.didFinishEditing()
-                }
         }
         .padding(.top, 38)
     }
     
     var CategoryInput: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Text("카테고리")
-                    .font(.headline)
-                Spacer()
-            }
+        VStack(alignment: .leading, spacing: 0) {
+            Text("카테고리")
+                .font(.headline)
             HStack(spacing: 0) {
                 Menu {
                     Picker(selection: $viewModel.selectedCategory) {
@@ -91,20 +111,35 @@ extension PromiseDetailView {
     }
     
     var MemoInput: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 0) {
                 Text("메모")
                     .font(.headline)
                 Spacer()
+                Text("\(viewModel.memoCount)/100")
+                    .foregroundColor(Color.inputCount)
             }
-            
-            TextEditor(text: $viewModel.memo)
-                .focused($isFocused)
-                .padding(.horizontal, 20.5)
-                .padding(.vertical, 20)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 59, maxHeight: .infinity)
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color.inputBackground))
-                .padding(.top, 19)
+
+            if #available(iOS 16.0, *){
+                Text(viewModel.memo.isEmpty ? "Your placeholder" : viewModel.memo)
+                    .font(.body)
+                    .padding(.vertical, 20)
+                    .padding(.horizontal, 20.5)
+                    .opacity(viewModel.memo.isEmpty ? 1 : 0.5)
+                    .frame(maxWidth: .infinity, minHeight: 40, alignment: .leading)
+                    .background(Color.inputBackground)
+                    .cornerRadius(10)
+                    .overlay(
+                        TextEditor(text: $viewModel.memo)
+                            .font(.body)
+                            .foregroundColor(Color.black)
+                            .scrollContentBackground(.hidden)
+                            .background(Color.inputBackground)
+                            .cornerRadius(10)
+                            .padding(.horizontal, 20.5)
+                    )
+                    .padding(.top, 19)
+            }
         }
         .padding(.top, 38)
     }
@@ -114,6 +149,7 @@ extension PromiseDetailView {
             dismiss()
         }) {
             Image(systemName: "arrow.left")
+                .foregroundColor(.mainPurple)
         }
     }
     
@@ -122,6 +158,7 @@ extension PromiseDetailView {
             viewModel.isShowingAlert = true
         }) {
             Text("삭제")
+                .foregroundColor(.mainPurple)
         }
         .alert("약속 삭제", isPresented: $viewModel.isShowingAlert, actions: {
             Button("취소", role: .cancel, action: {
@@ -136,5 +173,29 @@ extension PromiseDetailView {
           Text("해당 약속을 삭제할까요?")
         })
     }
-}
 
+    var editButton: some View {
+        Button {
+            if viewModel.isButtonAvailable() {
+                viewModel.didTapEditButton {
+                    dismiss()
+                }
+            }
+        } label: {
+            Text("수정 하기")
+                .font(.headline)
+                .foregroundColor(
+                    viewModel.isButtonAvailable() ?
+                    Color.white :
+                    Color.inputBackground)
+                .padding(.vertical, 18)
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .background(viewModel.isButtonAvailable() ?
+                    Color.mainPurple :
+                    Color.inputCount
+                )
+                .cornerRadius(10)
+        }
+        .padding(.bottom, 16)
+    }
+}

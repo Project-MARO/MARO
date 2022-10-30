@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>422958895227-tmfgrohc1he35m6p0qlq7vfb9u8opeji.apps.googleusercontent.com</string>
+	<string>151384803180-o1hadvrmmd0qaj6nvt7co2gckba07rqg.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.422958895227-tmfgrohc1he35m6p0qlq7vfb9u8opeji</string>
+	<string>com.googleusercontent.apps.151384803180-o1hadvrmmd0qaj6nvt7co2gckba07rqg</string>
 	<key>API_KEY</key>
-	<string>AIzaSyApOlHDrbSzuMUFOy7Zc2Ms058N4QMURJQ</string>
+	<string>AIzaSyCPdRR43paif2I61Nw7NNICPeTJgoaFqqQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>422958895227</string>
+	<string>151384803180</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.kim.Maro</string>
+	<string>com.hyeonsang.MARO</string>
 	<key>PROJECT_ID</key>
-	<string>maro-d4fe2</string>
+	<string>maro-dev</string>
 	<key>STORAGE_BUCKET</key>
-	<string>maro-d4fe2.appspot.com</string>
+	<string>maro-dev.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:422958895227:ios:66101513bc09ea8a96d2de</string>
+	<string>1:151384803180:ios:77cb85839c4cf5bff3d549</string>
 </dict>
 </plist>

@@ -41,10 +41,17 @@ extension CoreDataManager {
         let result = try? context.fetch(fetchRequest)
         return result ?? []
     }
-
-    func getPromiseBy(id identifier: String) -> PromiseEntity? {
+    
+    func getRandomPromise() -> PromiseEntity? {
         let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        let promises = try? context.fetch(fetchRequest)
+        let result = promises?.randomElement()
+        return result
+    }
+
+    func getTodayPromise() -> PromiseEntity? {
+        let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isTodayPromise = %d", true)
         fetchRequest.fetchLimit = 1
         let result = try? context.fetch(fetchRequest).first
         return result
@@ -57,13 +64,15 @@ extension CoreDataManager {
         promise.memo = memo
         promise.createdAt = Date()
         promise.category = category.rawValue
+        promise.isTodayPromise = false
         save()
     }
 
-    func editPromise(promise: PromiseEntity, content: String, memo: String, category: Category) {
+    func editPromise(promise: PromiseEntity, content: String, memo: String, category: Category, isTodayPromise: Bool) {
         promise.content = content
         promise.memo = memo
         promise.category = category.rawValue
+        promise.isTodayPromise = isTodayPromise
         save()
     }
 

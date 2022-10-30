@@ -67,23 +67,22 @@ extension MainView {
                     Image("cloudOne")
                 }
                 .padding(.bottom, 40)
-                
             }
             
             VStack (alignment: .center, spacing: 0) {
                 Spacer()
-                
+
                 if viewModel.promises.isEmpty {
                     Text("새로운 약속을 만들어볼까요?")
                         .font(.title3)
                         .foregroundColor(.white)
                         .padding(.bottom, 28)
                 } else {
-                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.randomPromise))번 약속을 지켜볼까요?")
+                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.todayPromise))번 약속을 지켜볼까요?")
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .padding(.bottom, 11)
-                    Text("\(viewModel.randomPromise?.content ?? "")")
+                    Text("\(viewModel.todayPromise?.content ?? "")")
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
                         .font(.title3)
@@ -102,12 +101,13 @@ extension MainView {
                     Text("+ 새 약속 만들기")
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
-                        .padding(.vertical, 10)
+                        .padding(.vertical, 14)
                         .padding(.horizontal, 28)
                         .overlay {
                             Capsule().stroke(.white, lineWidth: 1)
                         }
                 }
+                .padding(.bottom, 56)
                 .alert(isPresented: $viewModel.isShowongAlert) {
                     Alert(
                         title: Text("알림"),
@@ -118,8 +118,6 @@ extension MainView {
                 NavigationLink("", isActive: $viewModel.isShowingLink) {
                     CreatePromiseView()
                 }
-
-                Spacer()
             }
         }
     }
@@ -157,7 +155,7 @@ extension MainView {
                                     .cornerRadius(5)
                                 Spacer()
                             }
-                            Text("\(promise.content ?? "")")
+                            Text("\(promise.content)")
                                 .foregroundColor(.mainTextColor)
                                 .padding(.top, 6)
                         }

@@ -45,8 +45,8 @@ final class PromiseDetailViewModel: ObservableObject {
 
     init(promise: PromiseEntity) {
         self.promise = promise
-        self.content = promise.content ?? ""
-        self.memo = promise.memo ?? ""
+        self.content = promise.content
+        self.memo = promise.memo
         let category = Category(int: promise.category)
         self.selectedCategory = category?.toString ?? ""
     }
@@ -62,7 +62,8 @@ final class PromiseDetailViewModel: ObservableObject {
             promise: promise,
             content: content,
             memo: memo,
-            category: category
+            category: category,
+            isTodayPromise: promise.isTodayPromise
         )
         completion()
     }

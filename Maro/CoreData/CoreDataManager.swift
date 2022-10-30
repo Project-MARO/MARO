@@ -49,14 +49,6 @@ extension CoreDataManager {
         return result
     }
 
-    func getPromiseBy(id identifier: String) -> PromiseEntity? {
-        let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-        fetchRequest.fetchLimit = 1
-        let result = try? context.fetch(fetchRequest).first
-        return result
-    }
-
     func getTodayPromise() -> PromiseEntity? {
         let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "isTodayPromise = %d", true)

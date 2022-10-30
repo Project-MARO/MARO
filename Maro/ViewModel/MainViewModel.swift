@@ -107,57 +107,6 @@ extension MainViewModel {
 }
 
 extension MainViewModel {
-    
-//    func getPromiseById() -> PromiseEntity? {
-//        guard let promiseID = self.promiseID else { return nil }
-//        guard let promise = CoreDataManager.shared.getPromiseBy(id: promiseID) else { return nil }
-//        return promise
-//    }
-
-//    func isStoreRandomPromiseNeeded() async {
-//        if promises.isEmpty { return }
-//
-//        guard let log = self.log,
-//              let promiseID = self.promiseID
-//        else {
-//            storeRandomPromise()
-//            return
-//        }
-//
-//        if hasOverOneDay(log: log) {
-//            storeRandomPromise()
-//        }
-//    }
-
-//    func storeRandomPromise() {
-//        guard let promise = getRandomPromise() else { return }
-//
-//        if (promise.identifier == self.promiseID) {
-//            if promises.count == 1 {
-//                return
-//            } else {
-//                storeRandomPromise()
-//            }
-//        }
-//
-//        let formatter = DateFormatter(dateFormatType: .yearMonthDay)
-//        let log = formatter.string(from: Date())
-//        self.promiseID = promise.identifier
-//        self.log = log
-//    }
-
-    func hasOverOneDay(log: String) -> Bool {
-        let formatter = DateFormatter(dateFormatType: .yearMonthDay)
-        guard let logDate = formatter.date(from: log) else { return false }
-        let current = Date()
-        let components = Calendar.current.dateComponents([.day], from: logDate, to: current)
-        if components.day! > 1 {
-            return true
-        } else {
-            return false
-        }
-    }
-
     func findIndex(promise: PromiseEntity?) -> String {
         guard promise != nil else { return "00"}
         let optionalIndex = promises.firstIndex{$0 === promise}

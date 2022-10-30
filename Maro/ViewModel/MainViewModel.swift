@@ -12,18 +12,21 @@ final class MainViewModel: ObservableObject {
 
     @Published var promises: Array<PromiseEntity> = []
     @Published var isShowingLink = false
-    @Published var randomPromise: PromiseEntity?
     @Published var isShowongAlert = false
-//    var randomPromiseID: String {
-//        get {
-//            UserDefaults.standard.string(forKey: "randomPromiseID") ?? ""
-//        }
-//    }
-
+    var log = UserDefaults.standard.string(forKey: "log") {
+        didSet {
+            UserDefaults.standard.set(log, forKey: "log")
+        }
+    }
+    var promiseID = UserDefaults.standard.string(forKey: "promiseID") {
+        didSet {
+            UserDefaults.standard.set(promiseID, forKey: "promiseID")
+        }
+    }
+    
     func onAppear() {
         Task {
             await getAllPromises()
-//            await getPromiseByID()
         }
     }
 }
@@ -35,23 +38,68 @@ extension MainViewModel {
             self.promises = CoreDataManager.shared.getAllPromises()
         }
     }
+}
 
-//    func getPromiseByID() async {
-//        let result = CoreDataManager.shared.getPromiseBy(id: randomPromiseID)
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self = self else { return }
-//            self.randomPromise = result
+extension MainViewModel {
+    func getPromiseById() -> PromiseEntity? {
+        guard let promiseID = self.promiseID else { return nil }
+        guard let promise = CoreDataManager.shared.getPromiseBy(id: promiseID) else { return nil }
+        return promise
+    }
+
+//    func isStoreRandomPromiseNeeded() async {
+//        if promises.isEmpty { return }
+//
+//        guard let log = self.log,
+//              let promiseID = self.promiseID
+//        else {
+//            storeRandomPromise()
+//            return
+//        }
+//
+//        if hasOverOneDay(log: log) {
+//            storeRandomPromise()
 //        }
 //    }
 
+//    func storeRandomPromise() {
+//        guard let promise = getRandomPromise() else { return }
+//
+//        if (promise.identifier == self.promiseID) {
+//            if promises.count == 1 {
+//                return
+//            } else {
+//                storeRandomPromise()
+//            }
+//        }
+//
+//        let formatter = DateFormatter(dateFormatType: .yearMonthDay)
+//        let log = formatter.string(from: Date())
+//        self.promiseID = promise.identifier
+//        self.log = log
+//    }
+
+    func hasOverOneDay(log: String) -> Bool {
+        let formatter = DateFormatter(dateFormatType: .yearMonthDay)
+        guard let logDate = formatter.date(from: log) else { return false }
+        let current = Date()
+        let components = Calendar.current.dateComponents([.day], from: logDate, to: current)
+        if components.day! > 1 {
+            return true
+        } else {
+            return false
+        }
+    }
+
     func findIndex(promise: PromiseEntity?) -> String {
         guard promise != nil else { return "00"}
-        var index = promises.firstIndex{$0 === promise}!
-        index = index + 1
-        if 10 <= index {
-            return String(index)
+        let optionalIndex = promises.firstIndex{$0 === promise}
+        guard let index = optionalIndex else { return "00" }
+        let result = index + 1
+        if 10 <= result {
+            return String(result)
         } else {
-            return String("0\(index)")
+            return String("0\(result)")
         }
     }
 

@@ -35,7 +35,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // EXECUTE WHEN USER CLICKS NOTIFICATION WHILE APP IS ON BACKGROUND
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        if let messageID = userInfo[gcmMessageIDKey]{
+        if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID from userNotificationCenter didRecieve : ", messageID)
         }
         completionHandler()
@@ -53,7 +53,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         let deviceToken: [String:String] = ["token": fcmToken ?? ""]
-        print("Device Token : ", deviceToken)
+//        print("Device Token : ", deviceToken)
     }
 }
 

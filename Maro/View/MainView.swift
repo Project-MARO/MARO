@@ -79,17 +79,17 @@ extension MainView {
                         .foregroundColor(.white)
                         .padding(.bottom, 28)
                 } else {
-                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.randomPromise))번 약속을 지켜볼까요?")
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                        .padding(.bottom, 11)
-                    Text("\(viewModel.randomPromise?.content ?? "")")
-                        .multilineTextAlignment(.center)
-                        .lineLimit(2)
-                        .font(.title3)
-                        .foregroundColor(.white)
-                        .padding(.bottom, 28)
-                        .frame(minWidth: 0, maxWidth: 264)
+//                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.randomPromise))번 약속을 지켜볼까요?")
+//                        .font(.subheadline)
+//                        .foregroundColor(.white)
+//                        .padding(.bottom, 11)
+//                    Text("\(viewModel.randomPromise?.content ?? "")")
+//                        .multilineTextAlignment(.center)
+//                        .lineLimit(2)
+//                        .font(.title3)
+//                        .foregroundColor(.white)
+//                        .padding(.bottom, 28)
+//                        .frame(minWidth: 0, maxWidth: 264)
                 }
 
                 Button {

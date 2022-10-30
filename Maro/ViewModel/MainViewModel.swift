@@ -18,11 +18,6 @@ final class MainViewModel: ObservableObject {
             UserDefaults.standard.set(log, forKey: "log")
         }
     }
-    var promiseID = UserDefaults.standard.string(forKey: "promiseID") {
-        didSet {
-            UserDefaults.standard.set(promiseID, forKey: "promiseID")
-        }
-    }
     
     func onAppear() {
         Task {
@@ -41,11 +36,12 @@ extension MainViewModel {
 }
 
 extension MainViewModel {
-    func getPromiseById() -> PromiseEntity? {
-        guard let promiseID = self.promiseID else { return nil }
-        guard let promise = CoreDataManager.shared.getPromiseBy(id: promiseID) else { return nil }
-        return promise
-    }
+    
+//    func getPromiseById() -> PromiseEntity? {
+//        guard let promiseID = self.promiseID else { return nil }
+//        guard let promise = CoreDataManager.shared.getPromiseBy(id: promiseID) else { return nil }
+//        return promise
+//    }
 
 //    func isStoreRandomPromiseNeeded() async {
 //        if promises.isEmpty { return }

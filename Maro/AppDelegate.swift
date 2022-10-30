@@ -53,7 +53,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         let deviceToken: [String:String] = ["token": fcmToken ?? ""]
-//        print("Device Token : ", deviceToken)
+        print("Device Token : ", deviceToken)
     }
 }
 

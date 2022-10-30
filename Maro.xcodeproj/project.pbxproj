@@ -11,7 +11,6 @@
 		7A59868328FF1D0E00536A2D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59868228FF1D0E00536A2D /* Constant.swift */; };
 		7A5CBA1928FF4EF1002DC8C9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5CBA1828FF4EF1002DC8C9 /* NotificationManager.swift */; };
 		89A723C5290E9F0A00D063F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 89A723C4290E9F0A00D063F4 /* GoogleService-Info.plist */; };
-		89A723C7290EAB4E00D063F4 /* RandomPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A723C6290EAB4E00D063F4 /* RandomPromise.swift */; };
 		C66C9EF0290D514E0052A9F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */; };
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
@@ -54,7 +53,6 @@
 		7A59868228FF1D0E00536A2D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7A5CBA1828FF4EF1002DC8C9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		89A723C4290E9F0A00D063F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		89A723C6290EAB4E00D063F4 /* RandomPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPromise.swift; sourceTree = "<group>"; };
 		C66C9EEF290D514E0052A9F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
@@ -212,7 +210,6 @@
 			children = (
 				C6AA723A28FD05DB0091A868 /* Category.swift */,
 				C6AA724228FD2CE80091A868 /* PromiseEntity.swift */,
-				89A723C6290EAB4E00D063F4 /* RandomPromise.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,7 +313,6 @@
 				7A59868028FF1A7600536A2D /* View+.swift in Sources */,
 				C66C9EF0290D514E0052A9F4 /* AppDelegate.swift in Sources */,
 				C6AA723B28FD05DB0091A868 /* Category.swift in Sources */,
-				89A723C7290EAB4E00D063F4 /* RandomPromise.swift in Sources */,
 				C6A4559B290D119F00E65B27 /* ZStack+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

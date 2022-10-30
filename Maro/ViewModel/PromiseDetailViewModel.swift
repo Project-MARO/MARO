@@ -62,7 +62,8 @@ final class PromiseDetailViewModel: ObservableObject {
             promise: promise,
             content: content,
             memo: memo,
-            category: category
+            category: category,
+            isTodayPromise: promise.isTodayPromise
         )
         completion()
     }

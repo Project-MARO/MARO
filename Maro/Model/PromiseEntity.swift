@@ -17,9 +17,10 @@ public class PromiseEntity: NSManagedObject {
 
     @NSManaged public var identifier: String
     @NSManaged public var category: Int16
-    @NSManaged public var content: String?
+    @NSManaged public var content: String
     @NSManaged public var createdAt: Date?
-    @NSManaged public var memo: String?
+    @NSManaged public var memo: String
+    @NSManaged public var isTodayPromise: Bool
 
     var categoryEnum: Category {
         get {

@@ -445,7 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = 76AJ433CP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
@@ -462,7 +462,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyeonsang.MARO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kim.MARO;
 				PRODUCT_NAME = MARO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -485,7 +485,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Maro/Preview Content\"";
-				DEVELOPMENT_TEAM = DL9N9GFVMW;
+				DEVELOPMENT_TEAM = 76AJ433CP5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "-----Info.plist";
@@ -502,7 +502,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyeonsang.MARO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kim.MARO;
 				PRODUCT_NAME = MARO;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

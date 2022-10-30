@@ -71,30 +71,25 @@ extension MainView {
             
             VStack (alignment: .center, spacing: 0) {
                 Spacer()
-                
-                Text("새로운 약속을 만들어볼까요?")
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .padding(.bottom, 28)
-                
-//                if viewModel.promises.isEmpty {
-//                    Text("새로운 약속을 만들어볼까요?")
-//                        .font(.title3)
-//                        .foregroundColor(.white)
-//                        .padding(.bottom, 28)
-//                } else {
-//                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.getTodaysPromise()))번 약속을 지켜볼까요?")
-//                        .font(.subheadline)
-//                        .foregroundColor(.white)
-//                        .padding(.bottom, 11)
-//                    Text("\(viewModel.getTodaysPromise()?.content ?? "")")
-//                        .multilineTextAlignment(.center)
-//                        .lineLimit(2)
-//                        .font(.title3)
-//                        .foregroundColor(.white)
-//                        .padding(.bottom, 28)
-//                        .frame(minWidth: 0, maxWidth: 264)
-//                }
+
+                if viewModel.promises.isEmpty {
+                    Text("새로운 약속을 만들어볼까요?")
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .padding(.bottom, 28)
+                } else {
+                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.todayPromise))번 약속을 지켜볼까요?")
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                        .padding(.bottom, 11)
+                    Text("\(viewModel.todayPromise?.content ?? "")")
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .font(.title3)
+                        .foregroundColor(.white)
+                        .padding(.bottom, 28)
+                        .frame(minWidth: 0, maxWidth: 264)
+                }
 
                 Button {
                     if viewModel.isCreatePromiseAvailable() {
@@ -160,7 +155,7 @@ extension MainView {
                                     .cornerRadius(5)
                                 Spacer()
                             }
-                            Text("\(promise.content ?? "")")
+                            Text("\(promise.content)")
                                 .foregroundColor(.mainTextColor)
                                 .padding(.top, 6)
                         }

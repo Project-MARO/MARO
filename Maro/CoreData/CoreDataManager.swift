@@ -57,6 +57,14 @@ extension CoreDataManager {
         return result
     }
 
+    func getTodayPromise() -> PromiseEntity? {
+        let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isTodayPromise = %d", true)
+        fetchRequest.fetchLimit = 1
+        let result = try? context.fetch(fetchRequest).first
+        return result
+    }
+
     func createPromise(content: String, memo: String, category: Category) {
         let promise = PromiseEntity(context: container.viewContext)
         promise.identifier = UUID().uuidString
@@ -64,13 +72,15 @@ extension CoreDataManager {
         promise.memo = memo
         promise.createdAt = Date()
         promise.category = category.rawValue
+        promise.isTodayPromise = false
         save()
     }
 
-    func editPromise(promise: PromiseEntity, content: String, memo: String, category: Category) {
+    func editPromise(promise: PromiseEntity, content: String, memo: String, category: Category, isTodayPromise: Bool) {
         promise.content = content
         promise.memo = memo
         promise.category = category.rawValue
+        promise.isTodayPromise = isTodayPromise
         save()
     }
 

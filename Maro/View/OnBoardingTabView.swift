@@ -35,7 +35,7 @@ private extension OnBoardingTabView {
     var OnboardFirstView: some View {
         VStack(spacing: 0) {
             Text("나의 하루를 위한 하나의 약속을 확인해요")
-                .bodyFontSetting()
+                .onBoardTextStyle()
             Image("onBoarding1")
                 .padding(.top, Constant.screenHeight / 20)
             Spacer()
@@ -45,7 +45,7 @@ private extension OnBoardingTabView {
     var OnboardSecondView: some View {
         VStack(spacing: 0) {
             Text("꼭 지켜야할 나만의 약속들을\n간편하게 관리해요")
-                .bodyFontSetting()
+                .onBoardTextStyle()
             Image("onBoarding2")
                 .padding(.top, Constant.screenHeight / 20)
             Spacer()
@@ -57,7 +57,7 @@ private extension OnBoardingTabView {
             ZStack {
                 VStack {
                     Text("나의 하루를 위한 하나의 약속\n마로와 함께 해요")
-                        .bodyFontSetting()
+                        .onBoardTextStyle()
                     Spacer()
                 }
                 VStack {

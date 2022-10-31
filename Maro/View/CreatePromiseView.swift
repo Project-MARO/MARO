@@ -25,7 +25,7 @@ struct CreatePromiseView: View {
                 Spacer()
             }
             if isFocused {
-                onTapDismissKeyboardView
+                onTapDismissKeyboardView(isFocused: $isFocused)
             }
             createButton
         }
@@ -144,13 +144,5 @@ extension CreatePromiseView {
             }
             .padding(.bottom, 16)
         }
-    }
-
-    var onTapDismissKeyboardView: some View {
-        Rectangle()
-            .opacity(0.00000000000000000001)
-            .onTapGesture {
-                isFocused = false
-            }
     }
 }

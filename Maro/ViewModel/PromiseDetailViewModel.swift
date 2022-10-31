@@ -41,8 +41,6 @@ final class PromiseDetailViewModel: ObservableObject {
         memo.count
     }
 
-    let categories = Category.allCases.map { $0.toString }
-
     init(promise: PromiseEntity) {
         self.promise = promise
         self.content = promise.content

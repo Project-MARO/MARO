@@ -9,11 +9,10 @@ import SwiftUI
 
 struct MainView: View {
     
-    @ObservedObject var viewModel: MainViewModel
+    @ObservedObject var viewModel = MainViewModel()
     @AppStorage("isShowingOnboarding") var isShowingOnboarding: Bool = true
     
     init() {
-        viewModel = MainViewModel()
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.accentColor)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.indicatorGray)
     }
@@ -21,13 +20,9 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                Header
+                header
                 Spacer()
-                if viewModel.promises.isEmpty {
-                    EmptyListView
-                } else {
-                    PromiseListView
-                }
+                promiseList
             }
             .onAppear {
                 viewModel.onAppear()
@@ -40,7 +35,7 @@ struct MainView: View {
 }
 
 private extension MainView {
-    var Header: some View {
+    var header: some View {
         Rectangle()
             .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
@@ -117,8 +112,18 @@ private extension MainView {
             }
         }
     }
+
+    @ViewBuilder
+    var promiseList: some View {
+        switch viewModel.listStatus {
+        case .emptyList:
+            emptyListView
+        case .filledList:
+            promiseListView
+        }
+    }
     
-    var EmptyListView: some View {
+    var emptyListView: some View {
         VStack {
             Spacer()
             
@@ -130,7 +135,7 @@ private extension MainView {
         }
     }
     
-    var PromiseListView: some View {
+    var promiseListView: some View {
         ScrollView {
             VStack {
                 ForEach(viewModel.promises) { promise in
@@ -141,7 +146,7 @@ private extension MainView {
                     }
                 }
                 .padding(.top, 16)
-                
+
                 Spacer()
             }
         }

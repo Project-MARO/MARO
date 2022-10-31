@@ -14,7 +14,10 @@
 		C68AA3A1290D7D9300B11B2A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */; };
 		C69C1306290E96E300D9B47F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1305290E96E300D9B47F /* CoreData.swift */; };
 		C69C130E290F5B3500D9B47F /* OnBoardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C130D290F5B3500D9B47F /* OnBoardingTabView.swift */; };
-		C69C1311290FBAD400D9B47F /* onTapDismissKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1310290FBAD400D9B47F /* onTapDismissKeyboardView.swift */; };
+		C69C1311290FBAD400D9B47F /* OnTapDismissKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1310290FBAD400D9B47F /* OnTapDismissKeyboardView.swift */; };
+		C69C1313290FBC1C00D9B47F /* ContentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1312290FBC1C00D9B47F /* ContentInputView.swift */; };
+		C69C1315290FBD5A00D9B47F /* CategoryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1314290FBD5A00D9B47F /* CategoryInputView.swift */; };
+		C69C1317290FBE5700D9B47F /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1316290FBE5700D9B47F /* BottomButtonView.swift */; };
 		C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45594290CE08200E65B27 /* DateFormatter+.swift */; };
 		C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45598290D0D1700E65B27 /* UINavigationController+.swift */; };
 		C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA71F528FCE59B0091A868 /* MaroApp.swift */; };
@@ -51,7 +54,10 @@
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
 		C69C1305290E96E300D9B47F /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		C69C130D290F5B3500D9B47F /* OnBoardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTabView.swift; sourceTree = "<group>"; };
-		C69C1310290FBAD400D9B47F /* onTapDismissKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onTapDismissKeyboardView.swift; sourceTree = "<group>"; };
+		C69C1310290FBAD400D9B47F /* OnTapDismissKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTapDismissKeyboardView.swift; sourceTree = "<group>"; };
+		C69C1312290FBC1C00D9B47F /* ContentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInputView.swift; sourceTree = "<group>"; };
+		C69C1314290FBD5A00D9B47F /* CategoryInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInputView.swift; sourceTree = "<group>"; };
+		C69C1316290FBE5700D9B47F /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
 		C6A45594290CE08200E65B27 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		C6A45598290D0D1700E65B27 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		C6AA71F228FCE59B0091A868 /* MARO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MARO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +101,10 @@
 		C69C130F290FBAC200D9B47F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				C69C1310290FBAD400D9B47F /* onTapDismissKeyboardView.swift */,
+				C69C1310290FBAD400D9B47F /* OnTapDismissKeyboardView.swift */,
+				C69C1312290FBC1C00D9B47F /* ContentInputView.swift */,
+				C69C1314290FBD5A00D9B47F /* CategoryInputView.swift */,
+				C69C1316290FBE5700D9B47F /* BottomButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -281,8 +290,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6AA721828FCFAF70091A868 /* CreatePromiseView.swift in Sources */,
+				C69C1317290FBE5700D9B47F /* BottomButtonView.swift in Sources */,
 				C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */,
 				C69C130E290F5B3500D9B47F /* OnBoardingTabView.swift in Sources */,
+				C69C1313290FBC1C00D9B47F /* ContentInputView.swift in Sources */,
+				C69C1315290FBD5A00D9B47F /* CategoryInputView.swift in Sources */,
 				C6AA720D28FCEA240091A868 /* Color+.swift in Sources */,
 				C69C1306290E96E300D9B47F /* CoreData.swift in Sources */,
 				C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */,
@@ -292,7 +304,7 @@
 				C6AA721628FCFA250091A868 /* DataModel.xcdatamodeld in Sources */,
 				C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */,
 				C6AA724328FD2CE80091A868 /* PromiseEntity.swift in Sources */,
-				C69C1311290FBAD400D9B47F /* onTapDismissKeyboardView.swift in Sources */,
+				C69C1311290FBAD400D9B47F /* OnTapDismissKeyboardView.swift in Sources */,
 				C6AA720828FCE5E20091A868 /* MainViewModel.swift in Sources */,
 				C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */,
 				C6AA721C28FD046F0091A868 /* CoreDataManager.swift in Sources */,

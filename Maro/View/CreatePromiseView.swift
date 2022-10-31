@@ -20,14 +20,14 @@ struct CreatePromiseView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                ContentInput
-                CategoryInput
+                contentInput
+                categoryInput
                 Spacer()
             }
             if isFocused {
-                onTapDismissKeyboardView(isFocused: $isFocused)
+                OnTapDismissKeyboardView(isFocused: $isFocused)
             }
-            createButton
+            editButton
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: dismissButton)
@@ -38,59 +38,20 @@ struct CreatePromiseView: View {
 }
 
 extension CreatePromiseView {
-    var ContentInput: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Text("약속 내용")
-                    .font(.headline)
-                
-                Spacer()
-                
-                Text("\(viewModel.inputCount)/25")
-                    .foregroundColor(Color.inputCount)
-            }
-            
-            TextField("약속 내용을 입력해주세요", text: $viewModel.content)
-                .customTextFieldSetting()
-                .focused($isFocused)
-        }
-        .padding(.top, 30)
+
+    var contentInput: some View {
+        ContentInputView(
+            isFocused: $isFocused,
+            content: $viewModel.content,
+            inputCount: viewModel.inputCount
+        )
     }
-    
-    var CategoryInput: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Text("카테고리")
-                    .font(.headline)
-                
-                Spacer()
-            }
-            HStack(spacing: 0) {
-                Menu {
-                    Picker(selection: $viewModel.selectedCategory) {
-                        ForEach(viewModel.categories, id: \.self) { category in
-                            Text(category)
-                        }
-                    } label: {
-                        
-                    }
-                } label: {
-                    HStack {
-                        Text(viewModel.selectedCategory == "선택" ? "선택" : viewModel.selectedCategory)
-                        Image(systemName: "arrowtriangle.down.fill")
-                    }
-                    .foregroundColor(viewModel.selectedCategory == "선택" ? Color.inputForeground : .black)
-                    .padding()
-                    .background(Color.inputBackground)
-                    .cornerRadius(10)
-                }
-                Spacer()
-            }
-            .padding(.top, 19)
-        }
-        .padding(.top, 30)
+
+    var categoryInput: some View {
+        CategoryInputView(
+            selectedCategory: $viewModel.selectedCategory
+        )
     }
-    
     var MemoInput: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -111,38 +72,23 @@ extension CreatePromiseView {
         .padding(.top, 30)
         .padding(.bottom)
     }
+
+    var editButton: some View {
+        BottomButtonView(
+            type: .create,
+            isButtonAvailable: viewModel.isButtonAvailable()
+        ) {
+            viewModel.didTapButton {
+                dismiss()
+            }
+        }
+    }
     
     var dismissButton: some View {
         Button(action : {
             dismiss()
         }) {
             Image(systemName: "arrow.left")
-        }
-    }
-    
-    var createButton: some View {
-        VStack {
-            Spacer()
-            Button {
-                viewModel.didTapButton {
-                    dismiss()
-                }
-            } label: {
-                Text("약속 만들기")
-                    .font(.headline)
-                    .foregroundColor(
-                        viewModel.isButtonAvailable() ?
-                        Color.white :
-                        Color.inputBackground)
-                    .padding(.vertical, 18)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(viewModel.isButtonAvailable() ?
-                        Color.mainPurple :
-                        Color.inputCount
-                    )
-                    .cornerRadius(10)
-            }
-            .padding(.bottom, 16)
         }
     }
 }

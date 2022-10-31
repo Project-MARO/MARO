@@ -10,11 +10,21 @@ import Combine
 
 final class MainViewModel: ObservableObject {
 
-    @Published var promises: Array<PromiseEntity> = []
+    @Published var promises: Array<PromiseEntity> = [] {
+        didSet {
+            if promises.isEmpty {
+                listStatus = .emptyList
+            } else {
+                listStatus = .filledList
+            }
+        }
+    }
     @Published var todayPromise: PromiseEntity? = nil
     @Published var isShowingLink = false
     @Published var isShowongAlert = false
     @Published var refreshTrigger = false
+    var listStatus: PromiseListStatus = .emptyList
+
     var log = UserDefaults.standard.string(forKey: "log") {
         didSet {
             // MARK: - 만약 로그 찍었을때 날짜가 바뀌었다면
@@ -123,4 +133,9 @@ private extension MainViewModel {
             isTodayPromise: true
         )
     }
+}
+
+enum PromiseListStatus {
+    case emptyList
+    case filledList
 }

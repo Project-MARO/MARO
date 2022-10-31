@@ -31,7 +31,6 @@ struct MainView: View {
                     PromiseListView
                 }
             }
-            .ignoresSafeArea()
             .onAppear {
                 viewModel.onAppear()
             }
@@ -43,8 +42,8 @@ struct MainView: View {
     }
 }
 
-extension MainView {
-    private var Header: some View {
+private extension MainView {
+    var Header: some View {
         Rectangle()
             .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
@@ -54,7 +53,7 @@ extension MainView {
             .overlay { overlayView }
     }
     
-    private var overlayView: some View {
+    var overlayView: some View {
         ZStack {
             VStack {
                 HStack {
@@ -122,7 +121,7 @@ extension MainView {
         }
     }
     
-    private var EmptyListView: some View {
+    var EmptyListView: some View {
         VStack {
             Spacer()
             
@@ -134,35 +133,14 @@ extension MainView {
         }
     }
     
-    private var PromiseListView: some View {
+    var PromiseListView: some View {
         ScrollView {
             VStack {
                 ForEach(viewModel.promises) { promise in
                     NavigationLink {
                         PromiseDetailView(promise: promise)
                     } label: {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(viewModel.findIndex(promise: promise))
-                                    .foregroundColor(Color.accentColor)
-                                    .font(.headline)
-                                Text(promise.categoryEnum.toString)
-                                    .foregroundColor(.white)
-                                    .font(.callout)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 3)
-                                    .background(promise.categoryEnum.color)
-                                    .cornerRadius(5)
-                                Spacer()
-                            }
-                            Text("\(promise.content)")
-                                .foregroundColor(.mainTextColor)
-                                .padding(.top, 6)
-                        }
-                        .padding(20)
-                        .background(Color.inputBackground)
-                        .cornerRadius(10)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 97, maxHeight: 97)
+                        PromiseCellView(promise: promise)
                     }
                 }
                 .padding(.top, 16)
@@ -171,5 +149,30 @@ extension MainView {
             }
         }
         .padding(.horizontal)
+    }
+
+    func PromiseCellView(promise: PromiseEntity) -> some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(viewModel.findIndex(promise: promise))
+                    .foregroundColor(Color.accentColor)
+                    .font(.headline)
+                Text(promise.categoryEnum.toString)
+                    .foregroundColor(.white)
+                    .font(.callout)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .background(promise.categoryEnum.color)
+                    .cornerRadius(5)
+                Spacer()
+            }
+            Text("\(promise.content)")
+                .foregroundColor(.mainTextColor)
+                .padding(.top, 6)
+        }
+        .padding(20)
+        .background(Color.inputBackground)
+        .cornerRadius(10)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 97, maxHeight: 97)
     }
 }

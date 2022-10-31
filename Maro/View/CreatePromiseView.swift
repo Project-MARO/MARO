@@ -24,7 +24,6 @@ struct CreatePromiseView: View {
                 CategoryInput
                 Spacer()
             }
-            .padding(.horizontal)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading: dismissButton
@@ -32,18 +31,11 @@ struct CreatePromiseView: View {
             .navigationTitle("약속 만들기")
             .navigationBarTitleDisplayMode(.inline)
             if isFocused {
-                Rectangle()
-                    .opacity(0.00000000000000000001)
-                    .onTapGesture {
-                        isFocused = false
-                    }
+                onTapDismissKeyboardView
             }
-            VStack {
-                Spacer()
-                createButton
-            }
-            .padding(.horizontal)
+            createButton
         }
+        .padding(.horizontal)
     }
 }
 
@@ -133,25 +125,37 @@ extension CreatePromiseView {
     }
     
     var createButton: some View {
-        Button {
-            viewModel.didTapButton {
-                dismiss()
+
+        VStack {
+            Spacer()
+            Button {
+                viewModel.didTapButton {
+                    dismiss()
+                }
+            } label: {
+                Text("약속 만들기")
+                    .font(.headline)
+                    .foregroundColor(
+                        viewModel.isButtonAvailable() ?
+                        Color.white :
+                        Color.inputBackground)
+                    .padding(.vertical, 18)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .background(viewModel.isButtonAvailable() ?
+                        Color.mainPurple :
+                        Color.inputCount
+                    )
+                    .cornerRadius(10)
             }
-        } label: {
-            Text("약속 만들기")
-                .font(.headline)
-                .foregroundColor(
-                    viewModel.isButtonAvailable() ?
-                    Color.white :
-                    Color.inputBackground)
-                .padding(.vertical, 18)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .background(viewModel.isButtonAvailable() ?
-                    Color.mainPurple :
-                    Color.inputCount
-                )
-                .cornerRadius(10)
+            .padding(.bottom, 16)
         }
-        .padding(.bottom, 16)
+    }
+
+    var onTapDismissKeyboardView: some View {
+        Rectangle()
+            .opacity(0.00000000000000000001)
+            .onTapGesture {
+                isFocused = false
+            }
     }
 }

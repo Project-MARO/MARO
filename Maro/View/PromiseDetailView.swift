@@ -25,9 +25,7 @@ struct PromiseDetailView: View {
                 ContentInput
                 CategoryInput
                 Spacer()
-                editButton
             }
-            .padding(.horizontal)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
                 leading: dismissButton,
@@ -36,23 +34,15 @@ struct PromiseDetailView: View {
             .navigationTitle("상세보기")
             .navigationBarTitleDisplayMode(.inline)
             if isFocused {
-                Rectangle()
-                    .opacity(0.00000000000000000001)
-                    .onTapGesture {
-                        isFocused = false
-                    }
+                onTapDismissKeyboardView
             }
-            VStack {
-                Spacer()
-                editButton
-            }
-            .padding(.horizontal)
+            editButton
         }
+        .padding(.horizontal)
     }
 }
 
-extension PromiseDetailView {
-
+private extension PromiseDetailView {
     var Header: some View {
         HStack(spacing: 0) {
             Text(viewModel.calculateDateFormat())
@@ -175,27 +165,38 @@ extension PromiseDetailView {
     }
 
     var editButton: some View {
-        Button {
-            if viewModel.isButtonAvailable() {
-                viewModel.didTapEditButton {
-                    dismiss()
+        VStack {
+            Spacer()
+            Button {
+                if viewModel.isButtonAvailable() {
+                    viewModel.didTapEditButton {
+                        dismiss()
+                    }
                 }
+            } label: {
+                Text("수정 하기")
+                    .font(.headline)
+                    .foregroundColor(
+                        viewModel.isButtonAvailable() ?
+                        Color.white :
+                        Color.inputBackground)
+                    .padding(.vertical, 18)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .background(viewModel.isButtonAvailable() ?
+                        Color.mainPurple :
+                        Color.inputCount
+                    )
+                    .cornerRadius(10)
             }
-        } label: {
-            Text("수정 하기")
-                .font(.headline)
-                .foregroundColor(
-                    viewModel.isButtonAvailable() ?
-                    Color.white :
-                    Color.inputBackground)
-                .padding(.vertical, 18)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .background(viewModel.isButtonAvailable() ?
-                    Color.mainPurple :
-                    Color.inputCount
-                )
-                .cornerRadius(10)
+            .padding(.bottom, 16)
         }
-        .padding(.bottom, 16)
+    }
+
+    var onTapDismissKeyboardView: some View {
+        Rectangle()
+            .opacity(0.00000000000000000001)
+            .onTapGesture {
+                isFocused = false
+            }
     }
 }

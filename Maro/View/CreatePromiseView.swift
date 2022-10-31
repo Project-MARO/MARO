@@ -24,9 +24,7 @@ struct CreatePromiseView: View {
                 categoryInput
                 Spacer()
             }
-            if isFocused {
-                OnTapDismissKeyboardView(isFocused: $isFocused)
-            }
+            onTapDismissKeyboard
             editButton
         }
         .navigationBarBackButtonHidden(true)
@@ -71,6 +69,13 @@ extension CreatePromiseView {
         }
         .padding(.top, 30)
         .padding(.bottom)
+    }
+
+    @ViewBuilder
+    var onTapDismissKeyboard: some View {
+        if isFocused {
+            OnTapDismissKeyboardView(isFocused: $isFocused)
+        }
     }
 
     var editButton: some View {

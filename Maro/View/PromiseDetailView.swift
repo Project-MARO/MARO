@@ -13,15 +13,15 @@ struct PromiseDetailView: View {
     @FocusState private var isFocused: Bool
 
     init(promise: PromiseEntity) {
+        viewModel = PromiseDetailViewModel(promise: promise)
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
         UITextView.appearance().backgroundColor = .clear
-        viewModel = PromiseDetailViewModel(promise: promise)
     }
 
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                Header
+                header
                 contentInput
                 categoryInput
                 Spacer()
@@ -41,7 +41,7 @@ struct PromiseDetailView: View {
 }
 
 private extension PromiseDetailView {
-    var Header: some View {
+    var header: some View {
         HStack(spacing: 0) {
             Text(viewModel.calculateDateFormat())
                 .font(.callout)

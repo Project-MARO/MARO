@@ -41,13 +41,6 @@ extension CoreDataManager {
         let result = try? context.fetch(fetchRequest)
         return result ?? []
     }
-    
-    func getRandomPromise() -> PromiseEntity? {
-        let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
-        let promises = try? context.fetch(fetchRequest)
-        let result = promises?.randomElement()
-        return result
-    }
 
     func getTodayPromise() -> PromiseEntity? {
         let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()

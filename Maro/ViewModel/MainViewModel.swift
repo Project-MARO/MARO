@@ -17,9 +17,12 @@ final class MainViewModel: ObservableObject {
     @Published var refreshTrigger = false
     var log = UserDefaults.standard.string(forKey: "log") {
         didSet {
+            // MARK: - 만약 로그 찍었을때 날짜가 바뀌었다면
             if oldValue != log {
                 Task {
+                    // MARK: - 오늘의 약속을 없애고
                     await resetIsTodayPromise()
+                    // MARK: - 오늘의 약속을 새로 뽑는다
                     await selectTodayPromise()
                 }
             }
@@ -30,6 +33,7 @@ final class MainViewModel: ObservableObject {
         Task {
             await getAllPromises()
             await getTodayPromise()
+            // MARK: - 유저가 앱을 킨 날짜를 로그로 남겨서 저장한다
             leaveLog()
         }
     }
@@ -103,6 +107,7 @@ private extension MainViewModel {
               let category = Category(int: promise.category)
         else { return }
 
+        // MARK: - 만약 이전 프로미스와 새로운 프로미스가 같다면 다시 고른다
         if promise.identifier == todayPromise?.identifier {
             Task {
                 await selectTodayPromise()
@@ -117,12 +122,5 @@ private extension MainViewModel {
             category: category,
             isTodayPromise: true
         )
-    }
-
-    func returnTodayPromise() -> PromiseEntity? {
-        let filtered = promises.filter { promise in
-            promise.isTodayPromise == true
-        }
-        return filtered.first
     }
 }

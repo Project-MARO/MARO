@@ -50,7 +50,9 @@ final class PromiseDetailViewModel: ObservableObject {
         let category = Category(int: promise.category)
         self.selectedCategory = category?.toString ?? ""
     }
+}
 
+extension PromiseDetailViewModel {
     func didAllowDeletion(completion: @escaping (() -> Void)) {
         CoreDataManager.shared.deletePromise(promise: promise)
         completion()

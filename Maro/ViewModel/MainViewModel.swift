@@ -33,9 +33,29 @@ final class MainViewModel: ObservableObject {
             leaveLog()
         }
     }
+
+    func findIndex(promise: PromiseEntity?) -> String {
+        guard promise != nil else { return "00"}
+        let optionalIndex = promises.firstIndex{$0 === promise}
+        guard let index = optionalIndex else { return "00" }
+        let result = index + 1
+        if 10 <= result {
+            return String(result)
+        } else {
+            return String("0\(result)")
+        }
+    }
+
+    func isCreatePromiseAvailable() -> Bool {
+        if promises.count >= 10 {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
-extension MainViewModel {
+private extension MainViewModel {
     func getAllPromises() async {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -104,27 +124,5 @@ extension MainViewModel {
             promise.isTodayPromise == true
         }
         return filtered.first
-    }
-}
-
-extension MainViewModel {
-    func findIndex(promise: PromiseEntity?) -> String {
-        guard promise != nil else { return "00"}
-        let optionalIndex = promises.firstIndex{$0 === promise}
-        guard let index = optionalIndex else { return "00" }
-        let result = index + 1
-        if 10 <= result {
-            return String(result)
-        } else {
-            return String("0\(result)")
-        }
-    }
-
-    func isCreatePromiseAvailable() -> Bool {
-        if promises.count >= 10 {
-            return false
-        } else {
-            return true
-        }
     }
 }

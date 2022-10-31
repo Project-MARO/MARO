@@ -10,7 +10,7 @@ import SwiftUI
 struct OnBoardingTabView: View {
     @State var selection: Int = 1
     @Binding var isShowingOnboarding: Bool
-    @Binding var isSkippingOnboarding: Bool
+    @State var isShowingAlert = false
 
     var body: some View {
         NavigationView {
@@ -80,9 +80,9 @@ private extension OnBoardingTabView {
     }
 
     var skipButton: some View {
-        Button("건너뛰기") { isSkippingOnboarding.toggle() }
+        Button("건너뛰기") { isShowingAlert = true }
             .opacity(selection == 3 ? 0 : 1)
-            .alert("알림", isPresented: $isSkippingOnboarding, actions: {
+            .alert("알림", isPresented: $isShowingAlert, actions: {
                 Button("취소", action: { })
                 Button("건너뛰기", action: { isShowingOnboarding.toggle() })
             }) {

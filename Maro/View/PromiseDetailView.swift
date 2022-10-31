@@ -26,18 +26,18 @@ struct PromiseDetailView: View {
                 CategoryInput
                 Spacer()
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(
-                leading: dismissButton,
-                trailing: deleteButton
-            )
-            .navigationTitle("상세보기")
-            .navigationBarTitleDisplayMode(.inline)
             if isFocused {
                 onTapDismissKeyboardView
             }
-            editButton
+            editButtonView
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading: dismissButton,
+            trailing: deleteButton
+        )
+        .navigationTitle("상세보기")
+        .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal)
     }
 }
@@ -164,7 +164,7 @@ private extension PromiseDetailView {
         })
     }
 
-    var editButton: some View {
+    var editButtonView: some View {
         VStack {
             Spacer()
             Button {

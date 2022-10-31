@@ -12,7 +12,6 @@ struct MainView: View {
     @ObservedObject var viewModel: MainViewModel
     @AppStorage("isShowingOnboarding") var isShowingOnboarding: Bool = true
     @State var isSkippingOnboarding: Bool = false
-    @State var selection: Int = 1
     
     init() {
         viewModel = MainViewModel()
@@ -36,7 +35,10 @@ struct MainView: View {
             }
         }
         .fullScreenCover(isPresented: $isShowingOnboarding) {
-            OnBoardingTabView
+            OnBoardingTabView(
+                isShowingOnboarding: $isShowingOnboarding,
+                isSkippingOnboarding: $isSkippingOnboarding
+            )
                 .padding(.horizontal)
         }
     }

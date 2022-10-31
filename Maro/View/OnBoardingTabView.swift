@@ -2,65 +2,70 @@
 //  OnBoardingTabView.swift
 //  Maro
 //
-//  Created by Kim Insub on 2022/10/17.
+//  Created by Kim Insub on 2022/10/31.
 //
 
 import SwiftUI
 
-extension MainView {
-    var OnBoardingTabView: some View {
-        VStack {
-            HStack {
-                Spacer()
-                skipButton
+struct OnBoardingTabView: View {
+    @State var selection: Int = 1
+    @Binding var isShowingOnboarding: Bool
+    @Binding var isSkippingOnboarding: Bool
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                TabView(selection: $selection) {
+                    OnboardFirstView.tag(1)
+                    OnboardSecondView.tag(2)
+                    OnboardThirdView.tag(3)
+                }
+                .tabViewStyle(
+                    PageTabViewStyle(
+                        indexDisplayMode: .always
+                    )
+                )
+                .navigationBarItems(trailing: skipButton)
             }
-            .padding(.bottom, 50)
-            
-            TabView(selection: $selection) {
-                OnboardFirstView.tag(1)
-                OnboardSecondView.tag(2)
-                OnboardThirdView.tag(3)
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
         }
     }
-    
-    private var OnboardFirstView: some View {
+}
+
+private extension OnBoardingTabView {
+    var OnboardFirstView: some View {
         VStack(spacing: 0) {
             Text("나의 하루를 위한 하나의 약속을 확인해요")
                 .bodyFontSetting()
-            
             Image("onBoarding1")
                 .padding(.top, Constant.screenHeight / 20)
-            
             Spacer()
         }
     }
-    
-    private var OnboardSecondView: some View {
+
+    var OnboardSecondView: some View {
         VStack(spacing: 0) {
             Text("꼭 지켜야할 나만의 약속들을\n간편하게 관리해요")
                 .bodyFontSetting()
-            
             Image("onBoarding2")
                 .padding(.top, Constant.screenHeight / 20)
-            
             Spacer()
         }
     }
-    
-    private var OnboardThirdView: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            
-            Image("onBoarding3")
-                .padding(.bottom, 40)
-            
-            Text("나의 하루를 위한 하나의 약속\n마로와 함께 해요")
-                .bodyFontSetting()
 
-            Spacer()
-            
+    var OnboardThirdView: some View {
+        VStack(spacing: 0) {
+            ZStack {
+                VStack {
+                    Text("나의 하루를 위한 하나의 약속\n마로와 함께 해요")
+                        .bodyFontSetting()
+                    Spacer()
+                }
+                VStack {
+                    Spacer()
+                    Image("onBoarding3")
+                    Spacer()
+                }
+            }
             Button {
                 isShowingOnboarding = false
             } label: {
@@ -74,7 +79,7 @@ extension MainView {
         }
     }
 
-    private var skipButton: some View {
+    var skipButton: some View {
         Button("건너뛰기") { isSkippingOnboarding.toggle() }
             .opacity(selection == 3 ? 0 : 1)
             .alert("알림", isPresented: $isSkippingOnboarding, actions: {
@@ -85,5 +90,3 @@ extension MainView {
             }
     }
 }
-
-

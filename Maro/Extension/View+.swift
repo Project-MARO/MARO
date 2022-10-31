@@ -28,6 +28,7 @@ struct bodyFontViewModifier: ViewModifier {
             .font(.body)
             .foregroundColor(.mainTextColor)
             .multilineTextAlignment(.center)
+            .padding(.top, 70)
     }
 }
 

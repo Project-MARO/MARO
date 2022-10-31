@@ -24,17 +24,17 @@ struct CreatePromiseView: View {
                 CategoryInput
                 Spacer()
             }
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(
-                leading: dismissButton
-            )
-            .navigationTitle("약속 만들기")
-            .navigationBarTitleDisplayMode(.inline)
             if isFocused {
                 onTapDismissKeyboardView
             }
-            createButton
+            createButtonView
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading: dismissButton
+        )
+        .navigationTitle("약속 만들기")
+        .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal)
     }
 }
@@ -122,8 +122,7 @@ extension CreatePromiseView {
         }
     }
     
-    var createButton: some View {
-
+    var createButtonView: some View {
         VStack {
             Spacer()
             Button {

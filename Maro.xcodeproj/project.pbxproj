@@ -13,6 +13,7 @@
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
 		C68AA3A1290D7D9300B11B2A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */; };
 		C69C1306290E96E300D9B47F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1305290E96E300D9B47F /* CoreData.swift */; };
+		C69C130E290F5B3500D9B47F /* OnBoardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C130D290F5B3500D9B47F /* OnBoardingTabView.swift */; };
 		C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45594290CE08200E65B27 /* DateFormatter+.swift */; };
 		C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A45598290D0D1700E65B27 /* UINavigationController+.swift */; };
 		C6AA71F628FCE59B0091A868 /* MaroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA71F528FCE59B0091A868 /* MaroApp.swift */; };
@@ -20,7 +21,6 @@
 		C6AA71FA28FCE59D0091A868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6AA71F928FCE59D0091A868 /* Assets.xcassets */; };
 		C6AA71FD28FCE59D0091A868 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6AA71FC28FCE59D0091A868 /* Preview Assets.xcassets */; };
 		C6AA720828FCE5E20091A868 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA720728FCE5E20091A868 /* MainViewModel.swift */; };
-		C6AA720A28FCE6BF0091A868 /* OnBoardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA720928FCE6BF0091A868 /* OnBoardingTabView.swift */; };
 		C6AA720D28FCEA240091A868 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA720C28FCEA240091A868 /* Color+.swift */; };
 		C6AA721628FCFA250091A868 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C6AA721428FCFA250091A868 /* DataModel.xcdatamodeld */; };
 		C6AA721828FCFAF70091A868 /* CreatePromiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AA721728FCFAF70091A868 /* CreatePromiseView.swift */; };
@@ -49,6 +49,7 @@
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
 		C69C1305290E96E300D9B47F /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		C69C130D290F5B3500D9B47F /* OnBoardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTabView.swift; sourceTree = "<group>"; };
 		C6A45594290CE08200E65B27 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		C6A45598290D0D1700E65B27 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 		C6AA71F228FCE59B0091A868 /* MARO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MARO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +58,6 @@
 		C6AA71F928FCE59D0091A868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6AA71FC28FCE59D0091A868 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C6AA720728FCE5E20091A868 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		C6AA720928FCE6BF0091A868 /* OnBoardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTabView.swift; sourceTree = "<group>"; };
 		C6AA720C28FCEA240091A868 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		C6AA721528FCFA250091A868 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		C6AA721728FCFAF70091A868 /* CreatePromiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePromiseView.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 				C6AA71F728FCE59B0091A868 /* MainView.swift */,
 				C6AA721728FCFAF70091A868 /* CreatePromiseView.swift */,
 				C670377528FDD50200D4E719 /* PromiseDetailView.swift */,
-				C6AA720928FCE6BF0091A868 /* OnBoardingTabView.swift */,
+				C69C130D290F5B3500D9B47F /* OnBoardingTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -271,6 +271,7 @@
 			files = (
 				C6AA721828FCFAF70091A868 /* CreatePromiseView.swift in Sources */,
 				C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */,
+				C69C130E290F5B3500D9B47F /* OnBoardingTabView.swift in Sources */,
 				C6AA720D28FCEA240091A868 /* Color+.swift in Sources */,
 				C69C1306290E96E300D9B47F /* CoreData.swift in Sources */,
 				C6A45599290D0D1700E65B27 /* UINavigationController+.swift in Sources */,
@@ -284,7 +285,6 @@
 				C6A45595290CE08200E65B27 /* DateFormatter+.swift in Sources */,
 				C6AA721C28FD046F0091A868 /* CoreDataManager.swift in Sources */,
 				C6AA721A28FCFCFA0091A868 /* CreatePromiseViewModel.swift in Sources */,
-				C6AA720A28FCE6BF0091A868 /* OnBoardingTabView.swift in Sources */,
 				7A59868028FF1A7600536A2D /* View+.swift in Sources */,
 				C6AA723B28FD05DB0091A868 /* Category.swift in Sources */,
 			);

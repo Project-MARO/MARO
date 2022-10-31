@@ -13,36 +13,42 @@ struct OnBoardingTabView: View {
     @Binding var isSkippingOnboarding: Bool
 
     var body: some View {
-        NavigationView {
-            VStack {
-                TabView(selection: $selection) {
-                    OnboardFirstView.tag(1)
-                    OnboardSecondView.tag(2)
-                    OnboardThirdView.tag(3)
-                }
-                .tabViewStyle(
-                    PageTabViewStyle(
-                        indexDisplayMode: .always
-                    )
-                )
-                .navigationBarItems(trailing: skipButton)
-            }
+        if #available(iOS 16.0, *) {
+            NavigationStack { onboardingTabView }
+        } else {
+            NavigationView { onboardingTabView }
         }
     }
 }
 
 private extension OnBoardingTabView {
-    var OnboardFirstView: some View {
+    var onboardingTabView: some View {
+        VStack {
+            TabView(selection: $selection) {
+                OnboardFirst.tag(1)
+                OnboardSecond.tag(2)
+                OnboardThird.tag(3)
+            }
+            .tabViewStyle(
+                PageTabViewStyle(
+                    indexDisplayMode: .always
+                )
+            )
+            .navigationBarItems(trailing: skipButton)
+        }
+    }
+    
+    var OnboardFirst: some View {
         VStack(spacing: 0) {
             Text("나의 하루를 위한 하나의 약속을 확인해요")
                 .bodyFontSetting()
             Image("onBoarding1")
-                .padding(.top, Constant.screenHeight / 20)
+                .padding(.top, Constant.screenHeight / 25)
             Spacer()
         }
     }
 
-    var OnboardSecondView: some View {
+    var OnboardSecond: some View {
         VStack(spacing: 0) {
             Text("꼭 지켜야할 나만의 약속들을\n간편하게 관리해요")
                 .bodyFontSetting()
@@ -52,7 +58,7 @@ private extension OnBoardingTabView {
         }
     }
 
-    var OnboardThirdView: some View {
+    var OnboardThird: some View {
         VStack(spacing: 0) {
             ZStack {
                 VStack {

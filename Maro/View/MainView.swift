@@ -20,36 +20,42 @@ struct MainView: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                Header
-                Spacer()
-                if viewModel.promises.isEmpty {
-                    EmptyListView
-                } else {
-                    PromiseListView
-                }
+        if #available(iOS 16.0, *) {
+            NavigationStack { bodyView }
+        } else {
+            NavigationView { bodyView }
+        }
+    }
+}
+
+private extension MainView {
+    var bodyView: some View {
+        VStack(spacing: 0) {
+            Header
+            Spacer()
+            if viewModel.promises.isEmpty {
+                EmptyListView
+            } else {
+                PromiseListView
             }
-            .onAppear {
-                viewModel.onAppear()
-            }
+        }
+        .onAppear {
+            viewModel.onAppear()
         }
         .fullScreenCover(isPresented: $isShowingOnboarding) {
             OnBoardingTabView(
                 isShowingOnboarding: $isShowingOnboarding,
                 isSkippingOnboarding: $isSkippingOnboarding
             )
-                .padding(.horizontal)
+            .padding(.horizontal)
         }
     }
-}
 
-private extension MainView {
     var Header: some View {
         Rectangle()
             .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
             .ignoresSafeArea()
-            .frame(height: Constant.screenHeight * 0.35)
+            .frame(height: Constant.screenHeight * 0.3)
             .foregroundColor(Color.mainPurple)
             .padding(.bottom)
             .overlay { overlayView }
@@ -116,9 +122,19 @@ private extension MainView {
                         dismissButton: .default(Text("확인"))
                     )
                 }
-                NavigationLink("", isActive: $viewModel.isShowingLink) {
-                    CreatePromiseView()
+                
+                if #available(iOS 16.0, *) {
+                    NavigationLink("", isActive: $viewModel.isShowingLink) {
+                        CreatePromiseView()
+                    }
+                    .toolbar(.hidden)
+                } else {
+                    NavigationLink("", isActive: $viewModel.isShowingLink) {
+                        CreatePromiseView()
+                    }
+                    .navigationBarHidden(true)
                 }
+
             }
         }
     }

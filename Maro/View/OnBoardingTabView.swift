@@ -16,7 +16,6 @@ struct OnBoardingTabView: View {
         NavigationView {
             VStack {
                 TabView(selection: $selection) {
-
                     OnboardFirstView.tag(1)
                     OnboardSecondView.tag(2)
                     OnboardThirdView.tag(3)
@@ -77,6 +76,7 @@ private extension OnBoardingTabView {
                     .cornerRadius(10)
             }
             .padding(.bottom, 51)
+            .padding(.horizontal)
         }
     }
 

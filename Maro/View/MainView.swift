@@ -36,7 +36,6 @@ struct MainView: View {
         }
         .fullScreenCover(isPresented: $isShowingOnboarding) {
             OnBoardingTabView(isShowingOnboarding: $isShowingOnboarding)
-                .padding(.horizontal)
         }
     }
 }

@@ -27,12 +27,10 @@ struct CreatePromiseView: View {
             if isFocused {
                 onTapDismissKeyboardView
             }
-            createButtonView
+            createButton
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            leading: dismissButton
-        )
+        .navigationBarItems(leading: dismissButton)
         .navigationTitle("약속 만들기")
         .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal)
@@ -122,7 +120,7 @@ extension CreatePromiseView {
         }
     }
     
-    var createButtonView: some View {
+    var createButton: some View {
         VStack {
             Spacer()
             Button {

@@ -53,7 +53,6 @@ extension CreatePromiseView {
             }
             
             TextField("약속 내용을 입력해주세요", text: $viewModel.content)
-                .focused($isFocused)
                 .customTextFieldSetting()
                 .focused($isFocused)
         }
@@ -68,7 +67,6 @@ extension CreatePromiseView {
                 
                 Spacer()
             }
-            
             HStack(spacing: 0) {
                 Menu {
                     Picker(selection: $viewModel.selectedCategory) {

@@ -11,7 +11,6 @@ struct MainView: View {
     
     @ObservedObject var viewModel: MainViewModel
     @AppStorage("isShowingOnboarding") var isShowingOnboarding: Bool = true
-    @State var isSkippingOnboarding: Bool = false
     
     init() {
         viewModel = MainViewModel()

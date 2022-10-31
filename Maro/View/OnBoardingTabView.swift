@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct OnBoardingTabView: View {
-    @State var selection: Int = 1
     @Binding var isShowingOnboarding: Bool
+    @State var selection: Int = 1
     @State var isShowingAlert = false
 
     var body: some View {
         NavigationView {
             VStack {
                 TabView(selection: $selection) {
+
                     OnboardFirstView.tag(1)
                     OnboardSecondView.tag(2)
                     OnboardThirdView.tag(3)

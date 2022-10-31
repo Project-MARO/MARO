@@ -18,7 +18,8 @@ final class CreatePromiseViewModel: ObservableObject {
     }
     @Published var memo = ""
     @Published var selectedCategory = "선택"
-    let pickers = ["학업", "취업", "인생", "자기계발", "인간관계"]
+
+    let categories = Category.allCases.map{ $0.toString }
 
     var inputCount: Int {
         content.count
@@ -37,7 +38,6 @@ final class CreatePromiseViewModel: ObservableObject {
             guard let category = Category(string: selectedCategory) else { return }
             CoreDataManager.shared.createPromise(
                 content: content,
-                memo: memo,
                 category: category
             )
             completion()

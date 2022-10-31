@@ -41,7 +41,7 @@ final class PromiseDetailViewModel: ObservableObject {
         memo.count
     }
 
-    let pickers = ["학업", "취업", "인생", "자기계발", "인간관계"]
+    let categories = Category.allCases.map { $0.toString }
 
     init(promise: PromiseEntity) {
         self.promise = promise

@@ -87,7 +87,7 @@ extension PromiseDetailView {
             HStack(spacing: 0) {
                 Menu {
                     Picker(selection: $viewModel.selectedCategory) {
-                        ForEach(viewModel.pickers, id: \.self) { category in
+                        ForEach(viewModel.categories, id: \.self) { category in
                             Text(category)
                         }
                     } label: {

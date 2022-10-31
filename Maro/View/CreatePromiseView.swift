@@ -80,7 +80,7 @@ extension CreatePromiseView {
             HStack(spacing: 0) {
                 Menu {
                     Picker(selection: $viewModel.selectedCategory) {
-                        ForEach(viewModel.pickers, id: \.self) { category in
+                        ForEach(viewModel.categories, id: \.self) { category in
                             Text(category)
                         }
                     } label: {
@@ -108,10 +108,10 @@ extension CreatePromiseView {
             HStack(spacing: 0) {
                 Text("메모")
                     .font(.headline)
-                
+
                 Spacer()
             }
-            
+
             TextEditor(text: $viewModel.memo)
                 .focused($isFocused)
                 .padding(.horizontal, 20.5)

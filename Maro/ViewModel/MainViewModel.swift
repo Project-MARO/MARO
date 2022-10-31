@@ -45,8 +45,7 @@ extension MainViewModel {
 
     func getTodayPromise() async {
         let result = CoreDataManager.shared.getTodayPromise()
-        guard let result = result
-        else {
+        guard let result = result else {
             Task {
                 await selectTodayPromise()
                 await getTodayPromise()
@@ -66,14 +65,16 @@ extension MainViewModel {
 
     func resetIsTodayPromise() async {
         for promise in promises {
-            guard let category = Category(int: promise.category) else { return }
-            CoreDataManager.shared.editPromise(
-                promise: promise,
-                content: promise.content,
-                memo: promise.memo,
-                category: category,
-                isTodayPromise: false
-            )
+            if promise.isTodayPromise == true {
+                guard let category = Category(int: promise.category) else { return }
+                CoreDataManager.shared.editPromise(
+                    promise: promise,
+                    content: promise.content,
+                    memo: promise.memo,
+                    category: category,
+                    isTodayPromise: false
+                )
+            }
         }
     }
 

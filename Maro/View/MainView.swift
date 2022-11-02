@@ -31,20 +31,13 @@ private extension MainView {
         VStack(spacing: 0) {
             header
             Spacer()
-            if viewModel.promises.isEmpty {
-                EmptyListView
-            } else {
-                PromiseListView
-            }
+            promiseList
         }
         .onAppear {
             viewModel.onAppear()
         }
         .fullScreenCover(isPresented: $isShowingOnboarding) {
-            OnBoardingTabView(
-                isShowingOnboarding: $isShowingOnboarding,
-                isSkippingOnboarding: $isSkippingOnboarding
-            )
+            OnBoardingTabView(isShowingOnboarding: $isShowingOnboarding)
             .padding(.horizontal)
         }
     }

@@ -13,7 +13,7 @@ extension View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
     
-    func bodyFontSetting() -> some View {
+    func onBoardTextStyle() -> some View {
         modifier(bodyFontViewModifier())
     }
     

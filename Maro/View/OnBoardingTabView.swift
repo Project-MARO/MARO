@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct OnBoardingTabView: View {
-    @State var selection: Int = 1
     @Binding var isShowingOnboarding: Bool
-    @Binding var isSkippingOnboarding: Bool
+    @State var selection: Int = 1
+    @State var isShowingAlert = false
 
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -41,7 +41,7 @@ private extension OnBoardingTabView {
     var OnboardFirst: some View {
         VStack(spacing: 0) {
             Text("나의 하루를 위한 하나의 약속을 확인해요")
-                .bodyFontSetting()
+                .onBoardTextStyle()
             Image("onBoarding1")
                 .padding(.top, Constant.screenHeight / 25)
             Spacer()
@@ -51,7 +51,7 @@ private extension OnBoardingTabView {
     var OnboardSecond: some View {
         VStack(spacing: 0) {
             Text("꼭 지켜야할 나만의 약속들을\n간편하게 관리해요")
-                .bodyFontSetting()
+                .onBoardTextStyle()
             Image("onBoarding2")
                 .padding(.top, Constant.screenHeight / 20)
             Spacer()
@@ -63,7 +63,7 @@ private extension OnBoardingTabView {
             ZStack {
                 VStack {
                     Text("나의 하루를 위한 하나의 약속\n마로와 함께 해요")
-                        .bodyFontSetting()
+                        .onBoardTextStyle()
                     Spacer()
                 }
                 VStack {
@@ -82,13 +82,14 @@ private extension OnBoardingTabView {
                     .cornerRadius(10)
             }
             .padding(.bottom, 51)
+            .padding(.horizontal)
         }
     }
 
     var skipButton: some View {
-        Button("건너뛰기") { isSkippingOnboarding.toggle() }
+        Button("건너뛰기") { isShowingAlert = true }
             .opacity(selection == 3 ? 0 : 1)
-            .alert("알림", isPresented: $isSkippingOnboarding, actions: {
+            .alert("알림", isPresented: $isShowingAlert, actions: {
                 Button("취소", action: { })
                 Button("건너뛰기", action: { isShowingOnboarding.toggle() })
             }) {

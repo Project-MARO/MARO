@@ -19,8 +19,6 @@ final class CreatePromiseViewModel: ObservableObject {
     @Published var memo = ""
     @Published var selectedCategory = "선택"
 
-    let categories = Category.allCases.map{ $0.toString }
-
     var inputCount: Int {
         content.count
     }

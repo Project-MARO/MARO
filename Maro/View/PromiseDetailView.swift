@@ -13,23 +13,21 @@ struct PromiseDetailView: View {
     @FocusState private var isFocused: Bool
 
     init(promise: PromiseEntity) {
+        viewModel = PromiseDetailViewModel(promise: promise)
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
         UITextView.appearance().backgroundColor = .clear
-        viewModel = PromiseDetailViewModel(promise: promise)
     }
 
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                Header
-                ContentInput
-                CategoryInput
+                header
+                contentInput
+                categoryInput
                 Spacer()
             }
-            if isFocused {
-                onTapDismissKeyboardView
-            }
-            editButtonView
+            onTapDismissKeyboard
+            editButton
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
@@ -43,7 +41,7 @@ struct PromiseDetailView: View {
 }
 
 private extension PromiseDetailView {
-    var Header: some View {
+    var header: some View {
         HStack(spacing: 0) {
             Text(viewModel.calculateDateFormat())
                 .font(.callout)
@@ -54,50 +52,18 @@ private extension PromiseDetailView {
         .padding(.top, 38)
     }
 
-    var ContentInput: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack(spacing: 0) {
-                Text("약속 내용")
-                    .font(.headline)
-                Spacer()
-                Text("\(viewModel.inputCount)/25")
-                    .foregroundColor(Color.inputCount)
-            }
-            TextField("약속 내용을 입력해주세요",text: $viewModel.content)
-                .focused($isFocused)
-                .customTextFieldSetting()
-        }
-        .padding(.top, 38)
+    var contentInput: some View {
+        ContentInputView(
+            isFocused: $isFocused,
+            content: $viewModel.content,
+            inputCount: viewModel.inputCount
+        )
     }
-    
-    var CategoryInput: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("카테고리")
-                .font(.headline)
-            HStack(spacing: 0) {
-                Menu {
-                    Picker(selection: $viewModel.selectedCategory) {
-                        ForEach(viewModel.categories, id: \.self) { category in
-                            Text(category)
-                        }
-                    } label: {
 
-                    }
-                } label: {
-                    HStack {
-                        Text(viewModel.selectedCategory == "선택" ? "선택" : viewModel.selectedCategory)
-                        Image(systemName: "arrowtriangle.down.fill")
-                    }
-                    .foregroundColor(viewModel.selectedCategory == "선택" ? Color.inputForeground : .black)
-                    .padding()
-                    .background(Color.inputBackground)
-                    .cornerRadius(10)
-                }
-                Spacer()
-            }
-            .padding(.top, 19)
-        }
-        .padding(.top, 38)
+    var categoryInput: some View {
+        CategoryInputView(
+            selectedCategory: $viewModel.selectedCategory
+        )
     }
     
     var MemoInput: some View {
@@ -133,6 +99,23 @@ private extension PromiseDetailView {
         }
         .padding(.top, 38)
     }
+
+    var editButton: some View {
+        BottomButtonView(
+            type: .edit,
+            isButtonAvailable: viewModel.isButtonAvailable()) {
+                viewModel.didTapEditButton {
+                    dismiss()
+                }
+            }
+    }
+
+    @ViewBuilder
+    var onTapDismissKeyboard: some View {
+        if isFocused {
+            OnTapDismissKeyboardView(isFocused: $isFocused)
+        }
+    }
     
     var dismissButton: some View {
         Button(action : {
@@ -162,41 +145,5 @@ private extension PromiseDetailView {
         }, message: {
           Text("해당 약속을 삭제할까요?")
         })
-    }
-
-    var editButtonView: some View {
-        VStack {
-            Spacer()
-            Button {
-                if viewModel.isButtonAvailable() {
-                    viewModel.didTapEditButton {
-                        dismiss()
-                    }
-                }
-            } label: {
-                Text("수정 하기")
-                    .font(.headline)
-                    .foregroundColor(
-                        viewModel.isButtonAvailable() ?
-                        Color.white :
-                        Color.inputBackground)
-                    .padding(.vertical, 18)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .background(viewModel.isButtonAvailable() ?
-                        Color.mainPurple :
-                        Color.inputCount
-                    )
-                    .cornerRadius(10)
-            }
-            .padding(.bottom, 16)
-        }
-    }
-
-    var onTapDismissKeyboardView: some View {
-        Rectangle()
-            .opacity(0.00000000000000000001)
-            .onTapGesture {
-                isFocused = false
-            }
     }
 }

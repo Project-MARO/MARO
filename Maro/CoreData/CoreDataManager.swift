@@ -38,6 +38,8 @@ extension CoreDataManager {
 
     func getAllPromises() -> Array<PromiseEntity> {
         let fetchRequest: NSFetchRequest<PromiseEntity> = PromiseEntity.fetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(PromiseEntity.createdAt), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
         let result = try? context.fetch(fetchRequest)
         return result ?? []
     }

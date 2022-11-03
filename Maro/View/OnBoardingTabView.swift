@@ -53,7 +53,10 @@ private extension OnBoardingTabView {
                 selection = 2
             }
         }
-        .onAppear { withAnimation(.easeInOut(duration: 1)) { isTheFirstPageAppeared.toggle() } }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1)) { isTheFirstPageAppeared.toggle() }
+            NotificationManager.shared.requestAuthorizaiton()
+        }
         .opacity(isTheFirstPageAppeared ? 1 : 0)
     }
 
@@ -144,6 +147,7 @@ private extension OnBoardingTabView {
             }
             BottomButtonView(type: .start, isButtonAvailable: true) {
                 viewModel.didTapButton {
+                        NotificationManager.shared.scheduleNotification()
                         isShowingOnboarding = false
                 }
             }

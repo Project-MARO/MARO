@@ -11,10 +11,12 @@ struct MainView: View {
     
     @ObservedObject var viewModel = MainViewModel()
     @AppStorage("isShowingOnboarding") var isShowingOnboarding: Bool = true
+    @State private var isSettingButtonTapped: Bool = false
     
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.accentColor)
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color.indicatorGray)
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
     var body: some View {
@@ -57,20 +59,28 @@ private extension MainView {
         ZStack {
             VStack {
                 HStack {
-                    Image("cloudTwo")
-                        .padding(.trailing, 400)
+                    Image("cloudOne")
                     Spacer()
                 }
                 HStack {
                     Spacer()
-                    Image("cloudOne")
+                    Image("cloudTwo")
                 }
                 .padding(.bottom, 40)
             }
             
             VStack (alignment: .center, spacing: 0) {
+                HStack {
+                    Spacer()
+                    Button {
+                        isSettingButtonTapped.toggle()
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundColor(.white)
+                    }
+                }
+                .padding(.trailing, 18)
                 Spacer()
-
                 if viewModel.promises.isEmpty {
                     Text("새로운 약속을 만들어볼까요?")
                         .font(.title3)
@@ -120,9 +130,18 @@ private extension MainView {
                         CreatePromiseView()
                     }
                     .toolbar(.hidden)
+                    NavigationLink("", isActive: $isSettingButtonTapped) {
+                        SettingView()
+                    }
+                    .toolbar(.hidden)
+
                 } else {
                     NavigationLink("", isActive: $viewModel.isShowingLink) {
                         CreatePromiseView()
+                    }
+                    .navigationBarHidden(true)
+                    NavigationLink("", isActive: $isSettingButtonTapped) {
+                        SettingView()
                     }
                     .navigationBarHidden(true)
                 }

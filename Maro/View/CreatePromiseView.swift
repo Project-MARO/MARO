@@ -35,8 +35,7 @@ struct CreatePromiseView: View {
     }
 }
 
-extension CreatePromiseView {
-
+private extension CreatePromiseView {
     var contentInput: some View {
         ContentInputView(
             isFocused: $isFocused,
@@ -50,6 +49,7 @@ extension CreatePromiseView {
             selectedCategory: $viewModel.selectedCategory
         )
     }
+    
     var MemoInput: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -87,6 +87,7 @@ extension CreatePromiseView {
                 dismiss()
             }
         }
+        .disabled(!viewModel.isButtonAvailable())
     }
     
     var dismissButton: some View {

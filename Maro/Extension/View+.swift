@@ -25,10 +25,11 @@ extension View {
 struct bodyFontViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.body)
+            .font(.headline)
             .foregroundColor(.mainTextColor)
-            .multilineTextAlignment(.center)
-            .padding(.top, 70)
+            .multilineTextAlignment(.leading)
+            .padding(.top)
+            .padding(.bottom, 29)
     }
 }
 

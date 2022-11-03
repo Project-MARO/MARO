@@ -18,10 +18,15 @@ struct MainView: View {
     }
     
     var body: some View {
-        if #available(iOS 16.0, *) {
-            NavigationStack { bodyView }
+        if isShowingOnboarding {
+            OnBoardingTabView(isShowingOnboarding: $isShowingOnboarding)
+                .padding(.horizontal)
         } else {
-            NavigationView { bodyView }
+            if #available(iOS 16.0, *) {
+                NavigationStack { bodyView }
+            } else {
+                NavigationView { bodyView }
+            }
         }
     }
 }
@@ -35,10 +40,6 @@ private extension MainView {
         }
         .onAppear {
             viewModel.onAppear()
-        }
-        .fullScreenCover(isPresented: $isShowingOnboarding) {
-            OnBoardingTabView(isShowingOnboarding: $isShowingOnboarding)
-            .padding(.horizontal)
         }
     }
 

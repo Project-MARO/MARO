@@ -41,6 +41,7 @@ final class MainViewModel: ObservableObject {
     
     func onAppear() {
         Task {
+            self.log = "2020-10-20"
             await getAllPromises()
             await getTodayPromise()
             // MARK: - 유저가 앱을 킨 날짜를 로그로 남겨서 저장한다

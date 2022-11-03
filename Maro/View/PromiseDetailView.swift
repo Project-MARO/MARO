@@ -108,6 +108,7 @@ private extension PromiseDetailView {
                     dismiss()
                 }
             }
+            .disabled(!viewModel.isButtonAvailable())
     }
 
     @ViewBuilder

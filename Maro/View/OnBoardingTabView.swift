@@ -8,9 +8,17 @@
 import SwiftUI
 
 struct OnBoardingTabView: View {
+    @ObservedObject private var viewModel = CreatePromiseViewModel()
     @Binding var isShowingOnboarding: Bool
-    @State var selection: Int = 1
-    @State var isShowingAlert = false
+    @FocusState private var isFocused: Bool
+    @State private var selection: Int = 1
+    @State private var promise: String = ""
+    @State private var isShowingAlert = false
+    @State private var isTheFirstPageAppeared: Bool = false
+    @State private var isTheSecondPageAppeared: Bool = false
+    @State private var isTheThirdPageAppeared: Bool = false
+    @State private var isTheFourthPageAppeared: Bool = false
+    let categories = Category.allCases.map{ $0.toString }
 
     var body: some View {
         if #available(iOS 16.0, *) {
@@ -25,70 +33,128 @@ private extension OnBoardingTabView {
     var onboardingTabView: some View {
         VStack {
             TabView(selection: $selection) {
-                OnboardFirst.tag(1)
-                OnboardSecond.tag(2)
-                OnboardThird.tag(3)
+                onboardingFirst.tag(1)
+                onboardingSecond.tag(2)
+                onboardingThird.tag(3)
+                onboardingFourth.tag(4)
             }
-            .tabViewStyle(
-                PageTabViewStyle(
-                    indexDisplayMode: .always
-                )
-            )
             .navigationBarItems(trailing: skipButton)
         }
     }
     
-    var OnboardFirst: some View {
-        VStack(spacing: 0) {
-            Text("나의 하루를 위한 하나의 약속을 확인해요")
+    var onboardingFirst: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("나의 하루를 위한 하나의 약속\n마로를 시작합니다.")
                 .onBoardTextStyle()
-            Image("onBoarding1")
-                .padding(.top, Constant.screenHeight / 25)
-            Spacer()
-        }
-    }
-
-    var OnboardSecond: some View {
-        VStack(spacing: 0) {
-            Text("꼭 지켜야할 나만의 약속들을\n간편하게 관리해요")
-                .onBoardTextStyle()
-            Image("onBoarding2")
-                .padding(.top, Constant.screenHeight / 20)
-            Spacer()
-        }
-    }
-
-    var OnboardThird: some View {
-        VStack(spacing: 0) {
-            ZStack {
-                VStack {
-                    Text("나의 하루를 위한 하나의 약속\n마로와 함께 해요")
-                        .onBoardTextStyle()
-                    Spacer()
-                }
-                VStack {
-                    Spacer()
-                    Image("onBoarding3")
-                    Spacer()
-                }
+            BottomButtonView(
+                type: .next,
+                isButtonAvailable: true
+            ) {
+                selection = 2
             }
-            Button {
-                isShowingOnboarding = false
-            } label: {
-                Text("시작하기")
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 56, maxHeight: 56)
-                    .foregroundColor(.white)
-                    .background(Color.accentColor)
+        }
+        .onAppear { withAnimation(.easeInOut(duration: 1)) { isTheFirstPageAppeared.toggle() } }
+        .opacity(isTheFirstPageAppeared ? 1 : 0)
+    }
+
+    var onboardingSecond: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("삶에서 지켜야 할 약속이 있나요?\n마로에게 알려주세요.")
+                .onBoardTextStyle()
+            HStack(spacing: 0) {
+                Spacer()
+                Text("\(viewModel.content.count)/25")
+                    .foregroundColor(Color.inputCount)
+            }
+            TextField("긍정적인 생각하기", text: $viewModel.content)
+                .customTextFieldSetting()
+                .focused($isFocused)
+            BottomButtonView(
+                type: .next,
+                isButtonAvailable: viewModel.content == "" ? false : true
+            ) {
+                selection = 3
+            }
+            .disabled(viewModel.content == "" ? true : false)
+        }
+        .onAppear { withAnimation(.easeInOut(duration: 1)) { isTheSecondPageAppeared.toggle() } }
+        .opacity(isTheSecondPageAppeared ? 1 : 0)
+    }
+
+    var onboardingThird: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("어떤 상황에서 지켜야 할 약속인가요?")
+                .onBoardTextStyle()
+            HStack(spacing: 0) {
+                Menu {
+                    Picker(selection: $viewModel.selectedCategory) {
+                        ForEach(categories, id: \.self) { category in
+                            Text(category)
+                        }
+                    } label: {
+
+                    }
+                } label: {
+                    HStack {
+                        Text(viewModel.selectedCategory == "선택" ? "선택" : viewModel.selectedCategory)
+                        Image(systemName: "arrowtriangle.down.fill")
+                    }
+                    .foregroundColor(viewModel.selectedCategory == "선택" ? Color.inputForeground : .black)
+                    .padding()
+                    .background(Color.inputBackground)
                     .cornerRadius(10)
+                }
+                Spacer()
             }
-            .padding(.bottom, 51)
-            .padding(.horizontal)
+            BottomButtonView(
+                type: .next,
+                isButtonAvailable: viewModel.selectedCategory == "선택" ? false : true
+            ) {
+                selection = 4
+            }
+            .disabled(viewModel.selectedCategory == "선택" ? true : false)
         }
+        .onAppear { withAnimation(.easeInOut(duration: 1)) { isTheThirdPageAppeared.toggle() } }
+        .opacity(isTheThirdPageAppeared ? 1 : 0)
+    }
+    
+    var onboardingFourth: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("첫 약속이 만들어졌어요!")
+                .onBoardTextStyle()
+            Text("더 많은 약속을 만들고 실천하세요\n매일 아침 7시 약속들 중 하나를 전달해드릴게요")
+                .font(.subheadline)
+                .foregroundColor(.mainTextColor)
+                .multilineTextAlignment(.leading)
+            HStack {
+                Spacer()
+                VStack {
+                    Spacer()
+                    Group {
+                        Text("\"\(viewModel.content)\"")
+                            .font(.headline)
+                        Text(viewModel.selectedCategory)
+                            .font(.subheadline)
+                    }
+                    .foregroundColor(.mainTextColor)
+                    .padding(.bottom, 8)
+                    Spacer()
+                }
+                Spacer()
+            }
+            BottomButtonView(type: .start, isButtonAvailable: true) {
+                viewModel.didTapButton {
+                        isShowingOnboarding = false
+                }
+            }
+        }
+        .onAppear { withAnimation(.easeInOut(duration: 1)) { isTheFourthPageAppeared.toggle() } }
+        .opacity(isTheFourthPageAppeared ? 1 : 0)
     }
 
     var skipButton: some View {
         Button("건너뛰기") { isShowingAlert = true }
-            .opacity(selection == 3 ? 0 : 1)
+            .opacity(selection == 4 ? 0 : 1)
             .alert("알림", isPresented: $isShowingAlert, actions: {
                 Button("취소", action: { })
                 Button("건너뛰기", action: { isShowingOnboarding.toggle() })

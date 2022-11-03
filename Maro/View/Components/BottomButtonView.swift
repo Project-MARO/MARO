@@ -35,12 +35,12 @@ struct BottomButtonView: View {
                     .foregroundColor(
                         isButtonAvailable ?
                         Color.white :
-                        Color.inputBackground)
+                        Color.subTextColor)
                     .padding(.vertical, 18)
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .background(isButtonAvailable ?
                         Color.mainPurple :
-                        Color.inputCount
+                        Color.inputBackground
                     )
                     .cornerRadius(10)
             }
@@ -52,4 +52,6 @@ struct BottomButtonView: View {
 enum ButtonType: String {
     case create = "약속 만들기"
     case edit = "수정 하기"
+    case next = "다음으로"
+    case start = "시작하기"
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel = SettingViewModel()
+    @State var notificationStatus: Bool = UserDefaults.standard.bool(forKey: Constant.notificationStatus)
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
@@ -26,9 +27,9 @@ struct SettingView: View {
         .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal)
         .onAppear { viewModel.onAppear() }
-        .onChange(of: viewModel.isNotificationAllowed) { newValue in
+        .onChange(of: notificationStatus) { newValue in
             print("👀 3 SettingView: \(newValue)")
-            viewModel.didTapToggle(newValue)
+            viewModel.didTapToggle($notificationStatus)
         }
     }
 }
@@ -36,11 +37,15 @@ struct SettingView: View {
 private extension SettingView {
     var settingList: some View {
         VStack(spacing: 0) {
-            Toggle("알림 설정", isOn: $viewModel.isNotificationAllowed)
-                .toggleStyle(SwitchToggleStyle(tint: .mainPurple))
+            notificationSettingButton
             Spacer()
         }
         .padding(.top, 30)
+    }
+    
+    var notificationSettingButton: some View {
+        Toggle("알림 설정", isOn: $notificationStatus)
+            .toggleStyle(SwitchToggleStyle(tint: .mainPurple))
     }
     
     var dismissButton: some View {

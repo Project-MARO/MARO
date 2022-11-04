@@ -6,26 +6,30 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class SettingViewModel: ObservableObject {
-    @Published var isNotificationAllowed = false
-    
+
     func onAppear() {
         NotificationManager.shared.verifyNotificationStatus()
-        self.isNotificationAllowed = NotificationManager.shared.currentStatus
-        print("✅ 1 SettingViewModel: \(self.isNotificationAllowed)")
     }
     
-    func didTapToggle(_ status: Bool) {
-        switch status {
+    func didTapToggle(_ status: Binding<Bool>) {
+        switch status.wrappedValue {
         case true:
-            print("😇 4 SettingViewModel: \(self.isNotificationAllowed)")
-            NotificationManager.shared.requestAuthorizaiton()
-            NotificationManager.shared.scheduleNotification()
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url) { permissionStatus in
+                    if permissionStatus {
+                        NotificationManager.shared.requestAuthorizaiton()
+                        NotificationManager.shared.scheduleNotification()
+                    } else {
+                        UserDefaults.standard.set(false, forKey: Constant.notificationStatus)
+                    }
+                }
+            }
         case false:
-            print("😇 4 SettingViewModel: \(self.isNotificationAllowed)")
             NotificationManager.shared.cancelNotification()
+            UserDefaults.standard.set(false, forKey: Constant.notificationStatus)
         }
     }
 }
-

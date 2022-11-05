@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainView: View {
-    
     @ObservedObject var viewModel = MainViewModel()
     @AppStorage("isShowingOnboarding") var isShowingOnboarding: Bool = true
     @State private var isSettingButtonTapped: Bool = false
@@ -57,7 +56,7 @@ private extension MainView {
     
     var overlayView: some View {
         ZStack {
-            VStack {
+            VStack(spacing: 0) {
                 HStack {
                     Image("cloudOne")
                     Spacer()

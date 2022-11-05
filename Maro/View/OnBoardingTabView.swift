@@ -161,7 +161,10 @@ private extension OnBoardingTabView {
             .opacity(selection == 4 ? 0 : 1)
             .alert("알림", isPresented: $isShowingAlert, actions: {
                 Button("취소", action: { })
-                Button("건너뛰기", action: { isShowingOnboarding.toggle() })
+                Button("건너뛰기", action: {
+                    NotificationManager.shared.scheduleNotification()
+                    isShowingOnboarding.toggle()
+                })
             }) {
                 Text("설명을 건너뛸까요?")
             }

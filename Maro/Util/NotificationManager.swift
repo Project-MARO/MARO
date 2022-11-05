@@ -10,7 +10,6 @@ import UserNotifications
 
 final class NotificationManager {
     static let shared = NotificationManager()
-    @Published var currentStatus: Bool = false
     
     // Request whether a user will allow notification
     func requestAuthorizaiton() {
@@ -36,15 +35,16 @@ final class NotificationManager {
         dateComponents.minute = 0
         
         let calendarTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
+        let _ = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
         
         let request = UNNotificationRequest(
             identifier: UUID().uuidString,
             content: content,
-            trigger: timeTrigger
+            trigger: calendarTrigger
         )
         
         UNUserNotificationCenter.current().add(request)
+        UserDefaults.standard.set(true, forKey: "notificationStatus")
         print("😍 5 Notification Schedule Setting Done!")
     }
     
@@ -56,16 +56,13 @@ final class NotificationManager {
             switch permission.authorizationStatus {
             case .authorized, .provisional, .ephemeral:
                 print("authorized")
-                self.currentStatus = true
-                print("🔥 2 NotificationManager: \(self.currentStatus)")
+                UserDefaults.standard.set(true, forKey: Constant.notificationStatus)
             case .denied, .notDetermined:
                 print("denied")
-                self.currentStatus = false
-                print("🔥 2 NotificationManager: \(self.currentStatus)")
+                UserDefaults.standard.set(false, forKey: Constant.notificationStatus)
             @unknown default:
                 print("Hello")
-                self.currentStatus = false
-                print("🔥 2 NotificationManager: \(self.currentStatus)")
+                UserDefaults.standard.set(false, forKey: Constant.notificationStatus)
             }
         }
     }

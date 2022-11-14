@@ -10,12 +10,16 @@ import Combine
 
 @MainActor
 final class MainViewModel: ObservableObject {
-
     @Published var promises: Array<PromiseEntity> = [] {
         didSet {
-            todayPromise = promises.filter({ promise in
+            let todayPromiseList = promises.filter({ promise in
                 promise.isTodayPromise == true
-            }).first
+            })
+            if todayPromiseList.isEmpty {
+                setTodaysPromise()
+            } else {
+                todayPromise = todayPromiseList.first
+            }
         }
     }
     @Published var todayPromise: PromiseEntity? = nil
@@ -106,5 +110,6 @@ private extension MainViewModel {
             category: category,
             isTodayPromise: true
         )
+        onAppear()
     }
 }

@@ -17,7 +17,6 @@ struct CategoryInputView: View {
             HStack(spacing: 0) {
                 Text("카테고리")
                     .font(.headline)
-
                 Spacer()
             }
             HStack(spacing: 0) {

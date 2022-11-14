@@ -136,7 +136,7 @@ private extension PromiseDetailView {
         }
         .alert("약속 삭제", isPresented: $viewModel.isShowingAlert, actions: {
             Button("취소", role: .cancel, action: {
-                viewModel.isShowingAlert = false
+                viewModel.didTapCancel()
             })
             Button("삭제", role: .destructive, action: {
                 viewModel.didAllowDeletion {

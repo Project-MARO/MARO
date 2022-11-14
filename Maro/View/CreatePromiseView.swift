@@ -9,10 +9,11 @@ import SwiftUI
 
 struct CreatePromiseView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var viewModel = CreatePromiseViewModel()
+    @ObservedObject var viewModel: CreatePromiseViewModel
     @FocusState private var isFocused: Bool
     
-    init() {
+    init(count: Int) {
+        self.viewModel = CreatePromiseViewModel(count: count)
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.mainPurple)]
         UITextView.appearance().backgroundColor = .clear
     }

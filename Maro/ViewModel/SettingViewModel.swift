@@ -5,11 +5,9 @@
 //  Created by Noah's Ark on 2022/11/04.
 //
 
-import Foundation
 import SwiftUI
 
 final class SettingViewModel: ObservableObject {
-
     func onAppear() {
         NotificationManager.shared.verifyNotificationStatus()
     }
@@ -17,7 +15,7 @@ final class SettingViewModel: ObservableObject {
     func didTapToggle(_ status: Binding<Bool>) {
         switch status.wrappedValue {
         case true:
-            if let url = URL(string: UIApplication.openSettingsURLString) {
+            if let url =  URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url) { permissionStatus in
                     if permissionStatus {
                         NotificationManager.shared.requestAuthorizaiton()

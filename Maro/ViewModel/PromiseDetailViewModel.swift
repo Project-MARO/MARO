@@ -8,8 +8,8 @@
 import Combine
 import SwiftUI
 
+@MainActor
 final class PromiseDetailViewModel: ObservableObject {
-
     let promise: PromiseEntity
     @Published var content = "" {
         didSet {
@@ -54,6 +54,10 @@ extension PromiseDetailViewModel {
     func didAllowDeletion(completion: @escaping (() -> Void)) {
         CoreDataManager.shared.deletePromise(promise: promise)
         completion()
+    }
+
+    func didTapCancel() {
+        self.isShowingAlert = false
     }
 
     func didTapEditButton(completion: @escaping (() -> Void)) {

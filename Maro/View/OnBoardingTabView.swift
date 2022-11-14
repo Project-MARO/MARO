@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnBoardingTabView: View {
-    @ObservedObject private var viewModel = CreatePromiseViewModel()
+    @ObservedObject private var viewModel = CreatePromiseViewModel(count: 0)
     @Binding var isShowingOnboarding: Bool
     @FocusState private var isFocused: Bool
     @State private var selection: Int = 1

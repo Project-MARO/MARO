@@ -52,13 +52,13 @@ extension CoreDataManager {
         return result
     }
 
-    func createPromise(content: String, category: Category) {
+    func createPromise(content: String, category: Category, isTodayPromise: Bool) {
         let promise = PromiseEntity(context: container.viewContext)
         promise.identifier = UUID().uuidString
         promise.content = content
         promise.createdAt = Date()
         promise.category = category.rawValue
-        promise.isTodayPromise = false
+        promise.isTodayPromise = isTodayPromise
         save()
     }
 

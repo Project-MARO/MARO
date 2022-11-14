@@ -14,7 +14,6 @@
 		7A59868328FF1D0E00536A2D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59868228FF1D0E00536A2D /* Constant.swift */; };
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
-		C68AA3A1290D7D9300B11B2A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */; };
 		C69C1306290E96E300D9B47F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1305290E96E300D9B47F /* CoreData.swift */; };
 		C69C130E290F5B3500D9B47F /* OnBoardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C130D290F5B3500D9B47F /* OnBoardingTabView.swift */; };
 		C69C1311290FBAD400D9B47F /* OnTapDismissKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1310290FBAD400D9B47F /* OnTapDismissKeyboardView.swift */; };
@@ -89,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C68AA3A1290D7D9300B11B2A /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +237,6 @@
 			);
 			name = Maro;
 			packageProductDependencies = (
-				C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */,
 			);
 			productName = Maro;
 			productReference = C6AA71F228FCE59B0091A868 /* MARO.app */;
@@ -564,14 +561,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C68AA3A0290D7D9300B11B2A /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C66C9EEC290D51310052A9F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C6AA721428FCFA250091A868 /* DataModel.xcdatamodeld */ = {

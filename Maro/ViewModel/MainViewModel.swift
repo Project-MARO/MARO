@@ -8,44 +8,36 @@
 import Foundation
 import Combine
 
+@MainActor
 final class MainViewModel: ObservableObject {
 
     @Published var promises: Array<PromiseEntity> = [] {
         didSet {
-            if promises.isEmpty {
-                listStatus = .emptyList
-            } else {
-                listStatus = .filledList
-            }
+            todayPromise = promises.filter({ promise in
+                promise.isTodayPromise == true
+            }).first
         }
     }
     @Published var todayPromise: PromiseEntity? = nil
     @Published var isShowingLink = false
     @Published var isShowongAlert = false
     @Published var refreshTrigger = false
-    var listStatus: PromiseListStatus = .emptyList
-
     var log = UserDefaults.standard.string(forKey: "log") {
         didSet {
-            // MARK: - 만약 로그 찍었을때 날짜가 바뀌었다면
-            if oldValue != log {
-                Task {
-                    // MARK: - 오늘의 약속을 없애고
-                    await resetIsTodayPromise()
-                    // MARK: - 오늘의 약속을 새로 뽑는다
-                    await selectTodayPromise()
+            if log != oldValue {
+                resetIsTodayPromise { [weak self] in
+                    guard let self = self else { return }
+                    self.setTodaysPromise()
                 }
             }
+            UserDefaults.standard.set(log, forKey: "log")
         }
     }
-    
+
     func onAppear() {
-        Task {
-            self.log = "2020-10-20"
-            await getAllPromises()
-            await getTodayPromise()
-            // MARK: - 유저가 앱을 킨 날짜를 로그로 남겨서 저장한다
-            leaveLog()
+        getAllPromises { [weak self] in
+            guard let self = self else { return }
+            self.leaveLog()
         }
     }
 
@@ -71,25 +63,12 @@ final class MainViewModel: ObservableObject {
 }
 
 private extension MainViewModel {
-    func getAllPromises() async {
+    func getAllPromises(completion: @escaping () -> Void) {
+        let result = CoreDataManager.shared.getAllPromises()
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.promises = CoreDataManager.shared.getAllPromises()
-        }
-    }
-
-    func getTodayPromise() async {
-        let result = CoreDataManager.shared.getTodayPromise()
-        guard let result = result else {
-            Task {
-                await selectTodayPromise()
-                await getTodayPromise()
-            }
-            return
-        }
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.todayPromise = result
+            self.promises = result
+            completion()
         }
     }
 
@@ -98,10 +77,11 @@ private extension MainViewModel {
         self.log = formatter.string(from: Date())
     }
 
-    func resetIsTodayPromise() async {
-        for promise in promises {
+    func resetIsTodayPromise(completion: @escaping () -> Void) {
+        for promise in self.promises {
             if promise.isTodayPromise == true {
-                guard let category = Category(int: promise.category) else { return }
+                guard let category = Category(int: promise.category)
+                else { return }
                 CoreDataManager.shared.editPromise(
                     promise: promise,
                     content: promise.content,
@@ -110,22 +90,15 @@ private extension MainViewModel {
                     isTodayPromise: false
                 )
             }
+            completion()
         }
     }
 
-    func selectTodayPromise() async {
-        guard let promise = promises.randomElement(),
+    func setTodaysPromise() {
+        let todayPromise = self.promises.randomElement()
+        guard let promise = todayPromise,
               let category = Category(int: promise.category)
         else { return }
-
-        // MARK: - 만약 이전 프로미스와 새로운 프로미스가 같다면 다시 고른다
-        if promise.identifier == todayPromise?.identifier {
-            Task {
-                await selectTodayPromise()
-            }
-            return
-        }
-
         CoreDataManager.shared.editPromise(
             promise: promise,
             content: promise.content,
@@ -134,9 +107,4 @@ private extension MainViewModel {
             isTodayPromise: true
         )
     }
-}
-
-enum PromiseListStatus {
-    case emptyList
-    case filledList
 }

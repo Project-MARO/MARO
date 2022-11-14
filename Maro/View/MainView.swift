@@ -23,11 +23,7 @@ struct MainView: View {
             OnBoardingTabView(isShowingOnboarding: $isShowingOnboarding)
                 .padding(.horizontal)
         } else {
-            if #available(iOS 16.0, *) {
-                NavigationStack { bodyView }
-            } else {
-                NavigationView { bodyView }
-            }
+            NavigationView { bodyView }
         }
     }
 }
@@ -126,7 +122,7 @@ private extension MainView {
                 
                 if #available(iOS 16.0, *) {
                     NavigationLink("", isActive: $viewModel.isShowingLink) {
-                        CreatePromiseView()
+                        CreatePromiseView(count: viewModel.promises.count)
                     }
                     .toolbar(.hidden)
                     NavigationLink("", isActive: $isSettingButtonTapped) {
@@ -136,7 +132,7 @@ private extension MainView {
 
                 } else {
                     NavigationLink("", isActive: $viewModel.isShowingLink) {
-                        CreatePromiseView()
+                        CreatePromiseView(count: viewModel.promises.count)
                     }
                     .navigationBarHidden(true)
                     NavigationLink("", isActive: $isSettingButtonTapped) {
@@ -144,17 +140,16 @@ private extension MainView {
                     }
                     .navigationBarHidden(true)
                 }
-
             }
         }
     }
 
     @ViewBuilder
     var promiseList: some View {
-        switch viewModel.listStatus {
-        case .emptyList:
+        switch viewModel.promises.isEmpty {
+        case true:
             emptyListView
-        case .filledList:
+        case false:
             promiseListView
         }
     }
@@ -180,9 +175,8 @@ private extension MainView {
                     } label: {
                         PromiseCellView(promise: promise)
                     }
+                    .padding(.top, 16)
                 }
-                .padding(.top, 16)
-
                 Spacer()
             }
         }

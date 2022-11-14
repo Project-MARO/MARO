@@ -18,6 +18,11 @@ final class CreatePromiseViewModel: ObservableObject {
     }
     @Published var memo = ""
     @Published var selectedCategory = "선택"
+    var count: Int
+
+    init(count: Int) {
+        self.count = count
+    }
 
     var inputCount: Int {
         content.count
@@ -34,10 +39,19 @@ final class CreatePromiseViewModel: ObservableObject {
     func didTapButton(completion: @escaping (() -> Void)) {
         if isButtonAvailable() {
             guard let category = Category(string: selectedCategory) else { return }
-            CoreDataManager.shared.createPromise(
-                content: content,
-                category: category
-            )
+            if count == 0 {
+                CoreDataManager.shared.createPromise(
+                    content: content,
+                    category: category,
+                    isTodayPromise: true
+                )
+            } else {
+                CoreDataManager.shared.createPromise(
+                    content: content,
+                    category: category,
+                    isTodayPromise: false
+                )
+            }
             completion()
         }
     }

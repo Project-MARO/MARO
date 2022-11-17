@@ -75,6 +75,7 @@ private extension MainView {
                     }
                 }
                 .padding(.trailing, 18)
+                .padding(.top)
                 Spacer()
                 if viewModel.promises.isEmpty {
                     Text("새로운 약속을 만들어볼까요?")
@@ -82,11 +83,11 @@ private extension MainView {
                         .foregroundColor(.white)
                         .padding(.bottom, 28)
                 } else {
-                    Text("오늘은 \(viewModel.findIndex(promise: viewModel.todayPromise))번 약속을 지켜볼까요?")
+                    Text("오늘은 \(viewModel.todayIndex ?? "")번 약속을 지켜볼까요?")
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .padding(.bottom, 11)
-                    Text("\(viewModel.todayPromise?.content ?? "")")
+                    Text("\(viewModel.todayPromise ?? "")")
                         .multilineTextAlignment(.center)
                         .lineLimit(2)
                         .font(.title3)
@@ -129,7 +130,6 @@ private extension MainView {
                         SettingView()
                     }
                     .toolbar(.hidden)
-
                 } else {
                     NavigationLink("", isActive: $viewModel.isShowingLink) {
                         CreatePromiseView(count: viewModel.promises.count)

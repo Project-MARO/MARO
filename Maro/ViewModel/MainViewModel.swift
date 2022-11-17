@@ -10,41 +10,38 @@ import Combine
 
 @MainActor
 final class MainViewModel: ObservableObject {
-    @Published var promises: Array<PromiseEntity> = [] {
-        didSet {
-            let todayPromiseList = promises.filter({ promise in
-                promise.isTodayPromise == true
-            })
-            if todayPromiseList.isEmpty {
-                setTodaysPromise()
-            } else {
-                todayPromise = todayPromiseList.first
-            }
-        }
-    }
-    @Published var todayPromise: PromiseEntity? = nil
+    @Published var promises: Array<PromiseEntity> = []
+    @Published var todayIndex: String? = UserDefaults.standard.string(forKey: "todayIndex")
+    @Published var todayPromise: String? = UserDefaults.standard.string(forKey: "todayPromise")
     @Published var isShowingLink = false
     @Published var isShowongAlert = false
     @Published var refreshTrigger = false
-    var log = UserDefaults.standard.string(forKey: "log") {
+    var log = UserDefaults.standard.string(forKey: Constant.log) {
         didSet {
             if log != oldValue {
-                resetIsTodayPromise { [weak self] in
-                    guard let self = self else { return }
-                    self.setTodaysPromise()
-                }
+                self.setTodaysPromise()
             }
-            UserDefaults.standard.set(log, forKey: "log")
+            UserDefaults.standard.set(log, forKey: Constant.log)
         }
     }
-
+    
+    init() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.setTodaysPromise),
+            name: .NSCalendarDayChanged,
+            object: nil
+        )
+    }
+    
     func onAppear() {
         getAllPromises { [weak self] in
             guard let self = self else { return }
+            let log = UserDefaults.standard.string(forKey: Constant.log)
             self.leaveLog()
         }
     }
-
+    
     func findIndex(promise: PromiseEntity?) -> String {
         guard promise != nil else { return "00"}
         let optionalIndex = promises.firstIndex{$0 === promise}
@@ -56,13 +53,10 @@ final class MainViewModel: ObservableObject {
             return String("0\(result)")
         }
     }
-
+    
     func isCreatePromiseAvailable() -> Bool {
-        if promises.count >= 10 {
-            return false
-        } else {
-            return true
-        }
+        if promises.count >= 10 { return false }
+        else { return true }
     }
 }
 
@@ -75,41 +69,25 @@ private extension MainViewModel {
             completion()
         }
     }
-
+    
     func leaveLog() {
         let formatter = DateFormatter(dateFormatType: .yearMonthDay)
         self.log = formatter.string(from: Date())
     }
-
-    func resetIsTodayPromise(completion: @escaping () -> Void) {
-        for promise in self.promises {
-            if promise.isTodayPromise == true {
-                guard let category = Category(int: promise.category)
-                else { return }
-                CoreDataManager.shared.editPromise(
-                    promise: promise,
-                    content: promise.content,
-                    memo: promise.memo,
-                    category: category,
-                    isTodayPromise: false
-                )
-            }
-            completion()
+    
+    @objc func setTodaysPromise() {
+        let randomPromise = self.promises.randomElement()
+        guard let promise = randomPromise else { return }
+        let index = findIndex(promise: promise)
+        
+        if todayPromise == promise.content {
+            setTodaysPromise()
+        } else {
+            UserDefaults.standard.set(index, forKey: "todayIndex")
+            UserDefaults.standard.set(promise.content, forKey: "todayPromise")
+            todayIndex = index
+            todayPromise = promise.content
+            onAppear()
         }
-    }
-
-    func setTodaysPromise() {
-        let todayPromise = self.promises.randomElement()
-        guard let promise = todayPromise,
-              let category = Category(int: promise.category)
-        else { return }
-        CoreDataManager.shared.editPromise(
-            promise: promise,
-            content: promise.content,
-            memo: promise.memo,
-            category: category,
-            isTodayPromise: true
-        )
-        onAppear()
     }
 }

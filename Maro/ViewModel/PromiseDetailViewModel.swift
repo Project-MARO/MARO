@@ -27,12 +27,7 @@ final class PromiseDetailViewModel: ObservableObject {
     }
     @Published var selectedCategory = ""
     @Published var isShowingAlert = false
-    @Published var textEditorHeight: CGFloat = 80 {
-        didSet {
-            print(textEditorHeight)
-        }
-    }
-
+    @Published var textEditorHeight: CGFloat = 80 
     var inputCount: Int {
         content.count
     }

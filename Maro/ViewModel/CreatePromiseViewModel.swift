@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class CreatePromiseViewModel: ObservableObject {
     @Published var content = "" {
         didSet {

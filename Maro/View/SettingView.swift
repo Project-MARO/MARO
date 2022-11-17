@@ -28,7 +28,6 @@ struct SettingView: View {
         .padding(.horizontal)
         .onAppear { viewModel.onAppear() }
         .onChange(of: notificationStatus) { newValue in
-            print("👀 3 SettingView: \(newValue)")
             viewModel.didTapToggle($notificationStatus)
         }
     }

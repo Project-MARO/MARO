@@ -15,11 +15,7 @@ final class NotificationManager {
     func requestAuthorizaiton() {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         UNUserNotificationCenter.current().requestAuthorization(options: options) { (success, error) in
-            if let error = error {
-                print("Error: \(error)")
-            } else {
-                print("User did touch notification setting pop-up")
-            }
+            if let error = error { print("Error: \(error)") }
         }
     }
     
@@ -45,7 +41,6 @@ final class NotificationManager {
         
         UNUserNotificationCenter.current().add(request)
         UserDefaults.standard.set(true, forKey: "notificationStatus")
-        print("😍 5 Notification Schedule Setting Done!")
     }
     
     // Check user's notification status
@@ -55,13 +50,10 @@ final class NotificationManager {
         current.getNotificationSettings { permission in
             switch permission.authorizationStatus {
             case .authorized, .provisional, .ephemeral:
-                print("authorized")
                 UserDefaults.standard.set(true, forKey: Constant.notificationStatus)
             case .denied, .notDetermined:
-                print("denied")
                 UserDefaults.standard.set(false, forKey: Constant.notificationStatus)
             @unknown default:
-                print("Hello")
                 UserDefaults.standard.set(false, forKey: Constant.notificationStatus)
             }
         }
@@ -71,6 +63,5 @@ final class NotificationManager {
     func cancelNotification() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
-        print("🎁 6 Notification Cancelled")
     }
 }

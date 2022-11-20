@@ -28,7 +28,7 @@ final class MainViewModel: ObservableObject {
     init() {
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(self.setTodaysPromise),
+            selector: #selector(self.leaveLog),
             name: .NSCalendarDayChanged,
             object: nil
         )
@@ -61,6 +61,11 @@ final class MainViewModel: ObservableObject {
 }
 
 private extension MainViewModel {
+    @objc func leaveLog() {
+        let formatter = DateFormatter(dateFormatType: .yearMonthDay)
+        self.log = formatter.string(from: Date())
+    }
+    
     func getAllPromises(completion: @escaping () -> Void) {
         let result = CoreDataManager.shared.getAllPromises()
         DispatchQueue.main.async { [weak self] in
@@ -69,15 +74,11 @@ private extension MainViewModel {
             completion()
         }
     }
-    
-    func leaveLog() {
-        let formatter = DateFormatter(dateFormatType: .yearMonthDay)
-        self.log = formatter.string(from: Date())
-    }
-    
-    @objc func setTodaysPromise() {
+        
+    func setTodaysPromise() {
         let randomPromise = self.promises.randomElement()
         guard let promise = randomPromise else { return }
+        guard let todayPromise = self.todayPromise else { return }
         let index = findIndex(promise: promise)
         
         if todayPromise == promise.content {
@@ -85,8 +86,10 @@ private extension MainViewModel {
         } else {
             UserDefaults.standard.set(index, forKey: "todayIndex")
             UserDefaults.standard.set(promise.content, forKey: "todayPromise")
-            todayIndex = index
-            todayPromise = promise.content
+            DispatchQueue.main.async {
+                self.todayPromise = promise.content
+                self.todayIndex = index
+            }
             onAppear()
         }
     }

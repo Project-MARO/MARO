@@ -90,7 +90,6 @@ private extension MainView {
                         .lineLimit(2)
                         .font(.title3)
                         .foregroundColor(.white)
-                        .padding(.bottom, 28)
                         .frame(minWidth: 0, maxWidth: 264)
                 }
 
@@ -110,7 +109,8 @@ private extension MainView {
                             Capsule().stroke(.white, lineWidth: 1)
                         }
                 }
-                .padding(.bottom, 56)
+                .padding(.top, 40)
+                .padding(.bottom, 31)
                 .alert(isPresented: $viewModel.isShowongAlert) {
                     Alert(
                         title: Text("알림"),

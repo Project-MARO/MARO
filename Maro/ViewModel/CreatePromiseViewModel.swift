@@ -41,6 +41,8 @@ final class CreatePromiseViewModel: ObservableObject {
         if isButtonAvailable() {
             guard let category = Category(string: selectedCategory) else { return }
             if count == 0 {
+                UserDefaults.standard.set("01", forKey: "todayIndex")
+                UserDefaults.standard.set(content, forKey: "todayPromise")
                 CoreDataManager.shared.createPromise(
                     content: content,
                     category: category,

@@ -35,9 +35,7 @@ private extension MainView {
             Spacer()
             promiseList
         }
-        .onAppear {
-            viewModel.onAppear()
-        }
+        .onAppear { viewModel.onAppear() }
     }
 
     var header: some View {

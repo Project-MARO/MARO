@@ -48,10 +48,6 @@ private extension SettingView {
     }
     
     var dismissButton: some View {
-        Button(action : {
-            dismiss()
-        }) {
-            Image(systemName: "arrow.left")
-        }
+        DismissButton { dismiss() }
     }
 }

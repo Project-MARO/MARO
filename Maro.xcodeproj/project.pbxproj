@@ -12,6 +12,7 @@
 		7A1B9ACD29142427007A98B5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B9ACC29142427007A98B5 /* SettingViewModel.swift */; };
 		7A59868028FF1A7600536A2D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59867F28FF1A7600536A2D /* View+.swift */; };
 		7A59868328FF1D0E00536A2D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A59868228FF1D0E00536A2D /* Constant.swift */; };
+		7AA77990292CF39500EB9688 /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA7798F292CF39500EB9688 /* DismissButton.swift */; };
 		C670377628FDD50200D4E719 /* PromiseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377528FDD50200D4E719 /* PromiseDetailView.swift */; };
 		C670377828FDD52700D4E719 /* PromiseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */; };
 		C69C1306290E96E300D9B47F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69C1305290E96E300D9B47F /* CoreData.swift */; };
@@ -55,6 +56,7 @@
 		7A1B9ACC29142427007A98B5 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		7A59867F28FF1A7600536A2D /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		7A59868228FF1D0E00536A2D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		7AA7798F292CF39500EB9688 /* DismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
 		C670377528FDD50200D4E719 /* PromiseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailView.swift; sourceTree = "<group>"; };
 		C670377728FDD52700D4E719 /* PromiseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseDetailViewModel.swift; sourceTree = "<group>"; };
 		C69C1305290E96E300D9B47F /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				C69C1312290FBC1C00D9B47F /* ContentInputView.swift */,
 				C69C1314290FBD5A00D9B47F /* CategoryInputView.swift */,
 				C69C1316290FBE5700D9B47F /* BottomButtonView.swift */,
+				7AA7798F292CF39500EB9688 /* DismissButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			files = (
 				C6AA721828FCFAF70091A868 /* CreatePromiseView.swift in Sources */,
 				C69C1317290FBE5700D9B47F /* BottomButtonView.swift in Sources */,
+				7AA77990292CF39500EB9688 /* DismissButton.swift in Sources */,
 				C6AA71F828FCE59B0091A868 /* MainView.swift in Sources */,
 				C69C130E290F5B3500D9B47F /* OnBoardingTabView.swift in Sources */,
 				C69C1313290FBC1C00D9B47F /* ContentInputView.swift in Sources */,

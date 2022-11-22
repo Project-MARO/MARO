@@ -8,6 +8,8 @@
 import SwiftUI
 
 final class SettingViewModel: ObservableObject {
+    let instagramURL = URL(string: "https://www.instagram.com/maro_today/")!
+    
     func onAppear() {
         NotificationManager.shared.verifyNotificationStatus()
     }

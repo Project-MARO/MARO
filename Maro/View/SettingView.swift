@@ -18,8 +18,10 @@ struct SettingView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            settingList
+        VStack(spacing: 22) {
+            notificationSettingButton
+            instagramLinkButton
+            Spacer()
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: dismissButton)
@@ -33,25 +35,24 @@ struct SettingView: View {
     }
 }
 
-private extension SettingView {
-    var settingList: some View {
-        VStack(spacing: 0) {
-            notificationSettingButton
-            Spacer()
-        }
-        .padding(.top, 30)
-    }
-    
+private extension SettingView {    
     var notificationSettingButton: some View {
         Toggle("알림 설정", isOn: $notificationStatus)
             .toggleStyle(SwitchToggleStyle(tint: .mainPurple))
     }
     
-    var dismissButton: some View {
-        Button(action : {
-            dismiss()
-        }) {
-            Image(systemName: "arrow.left")
+    var instagramLinkButton: some View {
+        Link(destination: viewModel.instagramURL) {
+            HStack {
+                Text("개발자와 소통하기")
+                    .foregroundColor(.black)
+                Spacer()
+                Image(systemName: "chevron.right")
+            }
         }
+    }
+    
+    var dismissButton: some View {
+        DismissButton { dismiss() }
     }
 }

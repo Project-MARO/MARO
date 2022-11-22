@@ -119,12 +119,7 @@ private extension PromiseDetailView {
     }
     
     var dismissButton: some View {
-        Button(action : {
-            dismiss()
-        }) {
-            Image(systemName: "arrow.left")
-                .foregroundColor(.mainPurple)
-        }
+        DismissButton { dismiss() }
     }
     
     var deleteButton: some View {

@@ -57,6 +57,24 @@ extension PromiseDetailViewModel {
 
     func didTapEditButton(completion: @escaping (() -> Void)) {
         guard let category = Category(string: selectedCategory) else { return }
+        guard let todayIndex = UserDefaults.standard.string(forKey: Constant.todayIndex) else { return }
+        var indexOfPromise = ""
+        
+        let promises = CoreDataManager.shared.getAllPromises()
+        let optionalIndex = promises.firstIndex{$0 === promise}
+        let index = optionalIndex ?? 0
+        let result = index + 1
+
+        if 10 <= result {
+            indexOfPromise = String(result)
+        } else {
+            indexOfPromise = String("0\(result)")
+        }
+
+        if indexOfPromise == todayIndex {
+            UserDefaults.standard.set(content, forKey: Constant.todayPromise)
+        }
+
         CoreDataManager.shared.editPromise(
             promise: promise,
             content: content,
@@ -66,7 +84,7 @@ extension PromiseDetailViewModel {
         )
         completion()
     }
-
+    
     func calculateDateFormat() -> String {
         let formatter = DateFormatter(dateFormatType: .koreanYearMonthDay)
         let result = formatter.string(from: promise.createdAt ?? Date())

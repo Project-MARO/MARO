@@ -26,6 +26,7 @@ final class MainViewModel: ObservableObject {
                 self.todayIndex = UserDefaults.standard.string(forKey: Constant.todayIndex)
                 self.todayPromise = UserDefaults.standard.string(forKey: Constant.todayPromise)
             }
+            
             UserDefaults.standard.set(log, forKey: Constant.log)
         }
     }

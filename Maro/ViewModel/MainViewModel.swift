@@ -10,7 +10,14 @@ import Combine
 
 @MainActor
 final class MainViewModel: ObservableObject {
-    @Published var promises: Array<PromiseEntity> = []
+    @Published var promises: Array<PromiseEntity> = [] {
+        didSet {
+            let result = promises.filter { $0.content == todayPromise }
+            if result.isEmpty && promises.count < oldValue.count {
+                self.setTodaysPromise()
+            }
+        }
+    }
     @Published var todayIndex: String? = ""
     @Published var todayPromise: String? = ""
     @Published var isShowingLink = false

@@ -23,8 +23,8 @@ final class MainViewModel: ObservableObject {
             }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.todayIndex = UserDefaults.standard.string(forKey: "todayIndex")
-                self.todayPromise = UserDefaults.standard.string(forKey: "todayPromise")
+                self.todayIndex = UserDefaults.standard.string(forKey: Constant.todayIndex)
+                self.todayPromise = UserDefaults.standard.string(forKey: Constant.todayPromise)
             }
             UserDefaults.standard.set(log, forKey: Constant.log)
         }
@@ -89,8 +89,8 @@ private extension MainViewModel {
         if todayPromise == promise.content {
             setTodaysPromise()
         } else {
-            UserDefaults.standard.set(index, forKey: "todayIndex")
-            UserDefaults.standard.set(promise.content, forKey: "todayPromise")
+            UserDefaults.standard.set(index, forKey: Constant.todayIndex)
+            UserDefaults.standard.set(promise.content, forKey: Constant.todayPromise)
             DispatchQueue.main.async {
                 self.todayPromise = promise.content
                 self.todayIndex = index

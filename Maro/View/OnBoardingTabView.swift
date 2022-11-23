@@ -147,8 +147,8 @@ private extension OnBoardingTabView {
             }
             BottomButtonView(type: .start, isButtonAvailable: true) {
                 viewModel.didTapButton {
-                    UserDefaults.standard.set("01", forKey: "todayIndex")
-                    UserDefaults.standard.set(viewModel.content, forKey: "todayPromise")
+                    UserDefaults.standard.set("01", forKey: Constant.todayIndex)
+                    UserDefaults.standard.set(viewModel.content, forKey: Constant.todayPromise)
                     NotificationManager.shared.scheduleNotification()
                     isShowingOnboarding = false
                 }

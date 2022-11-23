@@ -13,4 +13,6 @@ struct Constant {
     static let screenWidth: CGFloat = UIScreen.main.bounds.width
     static let notificationStatus = "notificationStatus"
     static let log = "log"
+    static let todayPromise = "todayPromise"
+    static let todayIndex = "todayIndex"
 }

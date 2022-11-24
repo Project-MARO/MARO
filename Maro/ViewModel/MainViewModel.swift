@@ -11,8 +11,8 @@ import Combine
 @MainActor
 final class MainViewModel: ObservableObject {
     @Published var promises: Array<PromiseEntity> = []
-    @Published var todayIndex: String? = UserDefaults.standard.string(forKey: "todayIndex")
-    @Published var todayPromise: String? = UserDefaults.standard.string(forKey: "todayPromise")
+    @Published var todayIndex: String? = ""
+    @Published var todayPromise: String? = ""
     @Published var isShowingLink = false
     @Published var isShowongAlert = false
     @Published var refreshTrigger = false
@@ -20,6 +20,11 @@ final class MainViewModel: ObservableObject {
         didSet {
             if log != oldValue {
                 self.setTodaysPromise()
+            }
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.todayIndex = UserDefaults.standard.string(forKey: "todayIndex")
+                self.todayPromise = UserDefaults.standard.string(forKey: "todayPromise")
             }
             UserDefaults.standard.set(log, forKey: Constant.log)
         }
@@ -74,7 +79,7 @@ private extension MainViewModel {
             completion()
         }
     }
-        
+    
     func setTodaysPromise() {
         let randomPromise = self.promises.randomElement()
         guard let promise = randomPromise else { return }

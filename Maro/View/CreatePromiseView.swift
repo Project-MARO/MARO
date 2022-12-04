@@ -20,13 +20,13 @@ struct CreatePromiseView: View {
     
     var body: some View {
         ZStack {
+            onTapDismissKeyboard
             VStack(spacing: 0) {
                 contentInput
                 categoryInput
                 Spacer()
+                editButton
             }
-            onTapDismissKeyboard
-            editButton
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: dismissButton)

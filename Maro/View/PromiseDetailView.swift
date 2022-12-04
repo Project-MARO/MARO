@@ -20,14 +20,14 @@ struct PromiseDetailView: View {
 
     var body: some View {
         ZStack {
+            onTapDismissKeyboard
             VStack(spacing: 0) {
                 header
                 contentInput
                 categoryInput
                 Spacer()
+                editButton
             }
-            onTapDismissKeyboard
-            editButton
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(

@@ -10,7 +10,14 @@ import Combine
 
 @MainActor
 final class MainViewModel: ObservableObject {
-    @Published var promises: Array<PromiseEntity> = []
+    @Published var promises: Array<PromiseEntity> = [] {
+        didSet {
+            let result = promises.filter { $0.content == todayPromise }
+            if result.isEmpty && promises.count < oldValue.count {
+                self.setTodaysPromise()
+            }
+        }
+    }
     @Published var todayIndex: String? = ""
     @Published var todayPromise: String? = ""
     @Published var isShowingLink = false
@@ -23,9 +30,10 @@ final class MainViewModel: ObservableObject {
             }
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                self.todayIndex = UserDefaults.standard.string(forKey: "todayIndex")
-                self.todayPromise = UserDefaults.standard.string(forKey: "todayPromise")
+                self.todayIndex = UserDefaults.standard.string(forKey: Constant.todayIndex)
+                self.todayPromise = UserDefaults.standard.string(forKey: Constant.todayPromise)
             }
+            
             UserDefaults.standard.set(log, forKey: Constant.log)
         }
     }
@@ -89,8 +97,8 @@ private extension MainViewModel {
         if todayPromise == promise.content {
             setTodaysPromise()
         } else {
-            UserDefaults.standard.set(index, forKey: "todayIndex")
-            UserDefaults.standard.set(promise.content, forKey: "todayPromise")
+            UserDefaults.standard.set(index, forKey: Constant.todayIndex)
+            UserDefaults.standard.set(promise.content, forKey: Constant.todayPromise)
             DispatchQueue.main.async {
                 self.todayPromise = promise.content
                 self.todayIndex = index
